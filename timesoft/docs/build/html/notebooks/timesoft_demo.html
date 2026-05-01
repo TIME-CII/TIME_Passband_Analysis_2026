@@ -1,0 +1,1943 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Loading Raw Data &mdash; timesoft 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/small_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Level 2 - Working with Maps" href="../maps.html" />
+    <link rel="prev" title="Level 1: Working with Timestream Data" href="../timestream.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> timesoft
+          
+
+          
+            
+            <img src="../_static/time_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing <code class="docutils literal notranslate"><span class="pre">timesoft</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contrib_rules.html">Contributing to the TIMESOFT Code and Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#some-guiding-principles">Some Guiding Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#doc-string-formatting">Doc String Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#basics-of-sphinx-documentation">Basics of Sphinx Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contrib_rules.html#jupyter-ipython-notebooks-with-sphinx">Jupyter/IPython Notebooks with Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Structures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs.html">Data Structures Used by the TIME Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_0.html">Level 0: Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_0.html#contents-of-the-netcdf-files">Contents of the netCDF Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#header-variables">Header Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#housekeeping-variables">Housekeeping Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#detector-variables">Detector Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#telescope-telemetry-variables">Telescope Telemetry Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#k-mirror-telemetry-variables">K-Mirror Telemetry Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_1.html">Level 1: Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#contents-of-the-timestream-files">Contents of the Timestream Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#telescope-flag-values">Telescope Flag Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_2.html">Level 2: Maps and Linemaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#contents-of-the-map-and-linemap-files">Contents of the Map and LineMap Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#the-extras-attribute">The ‘Extras’ Attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_3.html">Level 3: Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../raw.html">Level 0: Working with the Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#direct-interface-with-netcdf-data">Direct Interface with netCDF Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#generating-a-timestream">Generating A Timestream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#documentation-for-the-raw-module">Documentation for the <code class="docutils literal notranslate"><span class="pre">raw</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../timestream.html">Level 1: Working with Timestream Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#the-timestream-class">The Timestream Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#manipulating-timestream-data">Manipulating Timestream Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-accessing-specific-detectors">Methods for Accessing Specific Detectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-tidying-up-scans-and-headers">Methods for Tidying Up Scans and Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-analyzing-timestreams">Methods for Analyzing Timestreams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-producing-level-2-data-products">Methods for Producing Level 2 Data Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-saving-data-products">Methods for Saving Data Products</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../timestream.html#tutorial">Tutorial</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Loading Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Saving-and-Loading-Processed-Timestream-Data">Saving and Loading Processed Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Interacting-with-the-Timestream-Data">Interacting with the Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Processing-the-Data">Processing the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Coordinate-Systems">Coordinate Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generating-Maps">Generating Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generating-Line-Maps">Generating Line Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Extending-the-Timestream-Class">Extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maps.html">Data Level 2 - Working with Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../powspec.html">Data Level 3 - Working with the Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Level 0 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_api/raw.get_data.html">raw.get_data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#level-1-data-api">Level 1 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#timesoft-timestream">timesoft.Timestream</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../auto_api/timestream.Timestream.html">timestream.Timestream</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#accessing-detectors">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.restrict_detectors.html">timestream.Timestream.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#tidying-scan-information">Tidying Scan Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.header_entry.html">timestream.Timestream.header_entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#analyzing-timestreams">Analyzing Timestreams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan_det_mask.html">timestream.Timestream.filter_scan_det_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#producing-maps-and-1d-binned-data">Producing Maps and 1D Binned Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#saving-data">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#level-2-data-api">Level 2 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#timesoft-map-and-timesoft-linemap">timesoft.Map and timesoft.LineMap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../auto_api/maps.Map.html">maps.Map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.write.html">maps.Map.write</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#id1">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.restrict_detectors.html">maps.Map.restrict_detectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.LineMap.get_xf.html">maps.LineMap.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.LineMap.get_cr.html">maps.LineMap.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.LineMap.restrict_detectors.html">maps.LineMap.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#visualizing-maps">Visualizing Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.LineMap.plot.html">maps.LineMap.plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#id2">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.Map.write.html">maps.Map.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_api/maps.LineMap.write.html">maps.LineMap.write</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">timesoft</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../timestream.html">Level 1: Working with Timestream Data</a> &raquo;</li>
+        
+      <li>Loading Raw Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/notebooks/timesoft_demo.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Loading-Raw-Data">
+<h1>Loading Raw Data<a class="headerlink" href="#Loading-Raw-Data" title="Permalink to this headline">¶</a></h1>
+<p>At the core of <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>’s tools for working with TIME data is the <code class="docutils literal notranslate"><span class="pre">timesoft.Timestream</span></code> class, which provides tools for loading both raw (level 0) data and previously processed timestream (level 1) data. Here we provide a tutorial for using this class to access TIME data files and perform some common data processing tasks.</p>
+<p>We can get started by loading in some raw data. The raw data for this demo can be found in <code class="docutils literal notranslate"><span class="pre">TIME-analysis/timesandbox/demo/</span></code> in the file <code class="docutils literal notranslate"><span class="pre">20220204_mars_focus_1.50.zip</span></code>. Unzip this file to create the <code class="docutils literal notranslate"><span class="pre">TIME-analysis/timesandbox/demo/20220204_mars_focus_1.50</span></code> directory.</p>
+<p>Then we can import <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> and create a <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance for working with this data.</p>
+<p>(Note: the <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> package can generate a large number of warnings when loading data. Cells in this demo which load raw data often have the IPython magic <code class="docutils literal notranslate"><span class="pre">%%capture</span> <span class="pre">_</span></code> at the top in order to prevent these messages from being printed)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%capture</span> _
+<span class="kn">from</span> <span class="nn">timesoft</span> <span class="kn">import</span> <span class="n">Timestream</span>
+
+<span class="c1"># Load raw data for a focus check on Mars:</span>
+<span class="n">path_to_raw_data</span> <span class="o">=</span> <span class="s2">&quot;20220204_mars_focus_1.50/&quot;</span>
+<span class="n">ts_demo</span> <span class="o">=</span> <span class="n">Timestream</span><span class="p">(</span><span class="n">path_to_raw_data</span><span class="p">,</span><span class="n">mc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> inspects the path you provide and attempts to determine if you are loading raw data (from <code class="docutils literal notranslate"><span class="pre">.nc</span></code> netCDF files) or processed data (from <code class="docutils literal notranslate"><span class="pre">.npz</span></code> files created when data processed with <code class="docutils literal notranslate"><span class="pre">timesoft</span></code> functionality is saved). In this case, since the path specified is a directory and not an <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file, it assumes correctly that we want to import raw data.</p>
+<p>Once we have the data loaded we can get some basic information about it using the <code class="docutils literal notranslate"><span class="pre">print</span></code> function:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">ts_demo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+timesoft.Timestream instance
+
+        source: unknown
+        observation: unknown scan type
+        detectors in dataset: 960
+        samples per detector: 37000 (cleaned data), 37000 (raw data)
+
+current flags:
+        stored copy availabe: False
+        valid telescope data: True      (coordinates represented in: apparent)
+        scans identified: False
+        filtering applied: False        (filtering type: none)
+        maps constructed: False
+        linemaps constructed: False
+</pre></div></div>
+</div>
+<p>We see a variety of information about the observation performed, the detectors available, and the flags indicating what processing has been performed on the dataset so far (none since we just loaded the raw data).</p>
+<p>In this example, because we’re using data from the engineering run where some header data is missing, a number of fields read “unknown”. Most of these are not used by the built-in methods, for <code class="docutils literal notranslate"><span class="pre">Timestream</span></code>, but they are useful header information to have. We’ll see how to edit the header information in a moment.</p>
+<p>The initialization of <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> has a number of tools for controlling the dataset produced. For example, you can see above that our dataset contained information for 960 detectors - that’s every detector in the first spectrometer. Many of these were not in use during the engineering run, so loading and working with them all is overkill. You can instead specify a list of detectors to load using either the <code class="docutils literal notranslate"><span class="pre">xf</span></code> parameter (list in feedhorn-frequency coordinates) or the <code class="docutils literal notranslate"><span class="pre">cr</span></code> parameter (list
+in readout column-row coordinates).</p>
+<p>We can also store an uneditted copy of the data as part of the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class using the <code class="docutils literal notranslate"><span class="pre">store_copy</span></code>. This is useful for reducing data interactively, as it allows for resetting the data without reloading the raw data (which can be slow for large files).</p>
+<p>Here we load the data from our Mars observation, restricted to the detectors in feedhorn 7 and keeping a copy of the raw data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%capture</span> _
+<span class="c1"># Load only the detectors from the 7th feedhorn:</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">7</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">)]</span>
+<span class="n">ts_demo</span> <span class="o">=</span> <span class="n">Timestream</span><span class="p">(</span><span class="n">path_to_raw_data</span><span class="p">,</span><span class="n">mc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">xf</span><span class="o">=</span><span class="n">xf</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">ts_demo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+timesoft.Timestream instance
+
+        source: unknown
+        observation: unknown scan type
+        detectors in dataset: 60
+        samples per detector: 37000 (cleaned data), 37000 (raw data)
+
+current flags:
+        stored copy availabe: True
+        valid telescope data: True      (coordinates represented in: apparent)
+        scans identified: False
+        filtering applied: False        (filtering type: none)
+        maps constructed: False
+        linemaps constructed: False
+</pre></div></div>
+</div>
+</section>
+<section id="Saving-and-Loading-Processed-Timestream-Data">
+<h1>Saving and Loading Processed Timestream Data<a class="headerlink" href="#Saving-and-Loading-Processed-Timestream-Data" title="Permalink to this headline">¶</a></h1>
+<p>Once we have done some processing on a timestream it is useful to save it so we can resume our analysis at a later time. Additionally it may be useful to pass off the processed data to someone else or store the processed data indefinitely. The <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class has a built in format for saving data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path_to_processed_data</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;ts_demo.npz&quot;</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">path_to_processed_data</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This wrote the timestream data, including all processing applied, to a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file. Since we had only loaded the feedhorn 7 detectors, only those detectors will appear in the saved file. In addition, since we initialized our data with a stored second copy, we can set the <code class="docutils literal notranslate"><span class="pre">store_copy</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">Timestream.write</span></code> to True, in order to make that available when we reload the data (we could instead set it to False if we no longer needed the copy and wanted to save space).</p>
+<p>We can then reload this data by creating a new timestream instance.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span> <span class="o">=</span> <span class="n">Timestream</span><span class="p">(</span><span class="n">path_to_processed_data</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts_demo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+timesoft.Timestream instance
+
+        source: unknown
+        observation: unknown scan type
+        detectors in dataset: 60
+        samples per detector: 37000 (cleaned data), 37000 (raw data)
+
+current flags:
+        stored copy availabe: True
+        valid telescope data: True      (coordinates represented in: apparent)
+        scans identified: False
+        filtering applied: False        (filtering type: none)
+        maps constructed: False
+        linemaps constructed: False
+</pre></div></div>
+</div>
+<p>We could here have specified not to load the stored copy (<code class="docutils literal notranslate"><span class="pre">store_copy=False</span></code>) or further cut down the detectors by specifying <code class="docutils literal notranslate"><span class="pre">xf</span></code>/<code class="docutils literal notranslate"><span class="pre">cr</span></code>. Note that if we try to specify a detector not present in the saved data, it will be ignored:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">xf</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">6</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">8</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span>
+<span class="n">ts_demo</span> <span class="o">=</span> <span class="n">Timestream</span><span class="p">(</span><span class="n">path_to_processed_data</span><span class="o">+</span><span class="n">file_name</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">xf</span><span class="o">=</span><span class="n">xf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We requested detectors </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The loaded detectors are </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+We requested detectors [(6, 47), (7, 47), (8, 47)]
+The loaded detectors are [(7, 47)]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/helpers/_class_bases.py:158: UserWarning: Detector xf=(6, 47) is not in the dataset, skipped when loading
+  warnings.warn(&#34;Detector {}={} is not in the dataset, skipped when loading&#34;.format(det_coord_mode,id))
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/helpers/_class_bases.py:158: UserWarning: Detector xf=(8, 47) is not in the dataset, skipped when loading
+  warnings.warn(&#34;Detector {}={} is not in the dataset, skipped when loading&#34;.format(det_coord_mode,id))
+</pre></div></div>
+</div>
+<p>For the remainder of this demo we will use just the detectors at frequency index 47. Restricting the data we use to just these detector will improve the speed of the code.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%capture</span> _
+<span class="c1"># Detectors we&#39;ll use from here on:</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span><span class="mi">47</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)]</span>
+<span class="n">ts_demo</span> <span class="o">=</span> <span class="n">Timestream</span><span class="p">(</span><span class="n">path_to_raw_data</span><span class="p">,</span><span class="n">mc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">xf</span><span class="o">=</span><span class="n">xf</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Interacting-with-the-Timestream-Data">
+<h1>Interacting with the Timestream Data<a class="headerlink" href="#Interacting-with-the-Timestream-Data" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have the detectors we want loaded in a <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance, we can start interacting with the data. Each <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance has a few different attributes where the data is kept.</p>
+<p>First is the header (<code class="docutils literal notranslate"><span class="pre">Timestream.header</span></code>), which is a dictionary containing some summary information about the observation, a listing of the loaded detectors, and flags detailing what analysis has been performed.</p>
+<p>To start with, we can see what information is in the header:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;mc&#39;, &#39;n_detectors&#39;, &#39;n_samples&#39;, &#39;med_time&#39;, &#39;observer&#39;, &#39;object&#39;, &#39;datetime&#39;, &#39;detector_pars&#39;, &#39;scan_pars&#39;, &#39;original_data_path&#39;, &#39;original_files_in&#39;, &#39;filesystem_version&#39;, &#39;xf_coords&#39;, &#39;cr_coords&#39;, &#39;center_ra&#39;, &#39;center_dec&#39;, &#39;epoch&#39;, &#39;filter_type&#39;, &#39;flags&#39;])
+</pre></div></div>
+</div>
+<p>Most of the time, the any information from the header is kept up to date automatically by the built in methods of the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class. It can be used to recall information about the observation. For example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ts_demo contains data from an observation of </span><span class="si">{}</span><span class="s2"> conducted by </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;observer&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We currently have </span><span class="si">{}</span><span class="s2"> detectors loaded: xf=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;n_detectors&#39;</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The timestream contains </span><span class="si">{}</span><span class="s2"> samples&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;n_samples&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ts_demo contains data from an observation of unknown conducted by obs
+We currently have 16 detectors loaded: xf=[(0, 47) (1, 47) (2, 47) (3, 47) (4, 47) (5, 47) (6, 47) (7, 47) (8, 47)
+ (9, 47) (10, 47) (11, 47) (12, 47) (13, 47) (14, 47) (15, 47)]
+The timestream contains 37000 samples
+</pre></div></div>
+</div>
+<p>Our target is still listed as unknown instead of Mars. We can fix that using the <code class="docutils literal notranslate"><span class="pre">Timestream.header_entry</span></code> method (you can also edit the dictionary directly). By default, <code class="docutils literal notranslate"><span class="pre">Timestream.header_entry</span></code> prevents modifications of existing fields to prevent accidental overwrites of important information. We can disable this protection, since we know we want to overwrite the ‘object’ information.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header_entry</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">,</span><span class="s1">&#39;Mars&#39;</span><span class="p">,</span><span class="n">protect</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">header_entry</span><span class="p">(</span><span class="s1">&#39;observer&#39;</span><span class="p">,</span><span class="s1">&#39;rpk&#39;</span><span class="p">,</span><span class="n">protect</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ts_demo contains data from an observation of </span><span class="si">{}</span><span class="s2"> conducted by </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;observer&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We currently have </span><span class="si">{}</span><span class="s2"> detectors loaded: xf=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;n_detectors&#39;</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The timestream contains </span><span class="si">{}</span><span class="s2"> samples&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;n_samples&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ts_demo contains data from an observation of Mars conducted by rpk
+We currently have 16 detectors loaded: xf=[(0, 47) (1, 47) (2, 47) (3, 47) (4, 47) (5, 47) (6, 47) (7, 47) (8, 47)
+ (9, 47) (10, 47) (11, 47) (12, 47) (13, 47) (14, 47) (15, 47)]
+The timestream contains 37000 samples
+</pre></div></div>
+</div>
+<p>Data from the telescope and the receiver are recorded in a group of time-ordered arrays. If you just want to access the raw data you can do so using the attributes: * <code class="docutils literal notranslate"><span class="pre">timestream.t</span></code> - timestamp for each point (taken from the detector data) * <code class="docutils literal notranslate"><span class="pre">timestream.ra</span></code> - RA corresponding to each timestep (taken from the telescope and interpolated to the detector timestamps) * <code class="docutils literal notranslate"><span class="pre">timestream.dec</span></code> - declination corresponding to each timestep (taken from the telescope and interpolated to the detector
+timestamps) * <code class="docutils literal notranslate"><span class="pre">timestream.az</span></code> - azimuth corresponding to each timestep (taken from the telescope and interpolated to the detector timestamps) * <code class="docutils literal notranslate"><span class="pre">timestream.el</span></code> - telescope elevation corresponding to each timestep (taken from the telescope and interpolated to the detector timestamps) * <code class="docutils literal notranslate"><span class="pre">timestream.tel_flags</span></code> - telescope flag corresponding to each timestep (taken from the telescope and interpolated to the detector timestamps) * <code class="docutils literal notranslate"><span class="pre">timestream.data</span></code> - data for each detector. By default,
+the data is returned as a 2D array of shape (n_detectors, n_samples). The order of the first index is stored in <code class="docutils literal notranslate"><span class="pre">timestream.header['xf_coords']</span></code></p>
+<p>To demonstrate, here is a way to visualize the scan pattern of the telescope:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">.6</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;RA [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">ra</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Dec [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;RA [degrees]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Dec [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Azimuth [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">az</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Elevation [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">el</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Azimuth [degrees]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Elevation [degrees]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">az</span><span class="p">,</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">el</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_22_0.png" src="../_images/notebooks_timesoft_demo_22_0.png" />
+</div>
+</div>
+<p>You can see that our map was constructed by using rows of constant declination and varrying RA. There is also some data at the begining collected while the telescope was moving to its starting location.</p>
+<p>Accessing the detector data we want can be a little more tricky, since any <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance can have different ordering of the data. To get around this, there are two helper methods, <code class="docutils literal notranslate"><span class="pre">Timestream.get_xf</span></code> and <code class="docutils literal notranslate"><span class="pre">Timestream.get_cr</span></code> that can determine the location of data for a detector specified in xf or cr coordinates respectively.</p>
+<p>To plot the detector readout of detector xf=(7,47), we can do the following:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Detector Counts [arb]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_24_0.png" src="../_images/notebooks_timesoft_demo_24_0.png" />
+</div>
+</div>
+<p>We can zoom in on the region around t=200 seconds, where the regularly spaced peaks correspond to the beam passing over Mars.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Detector Counts [arb]&#39;</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">225</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">410</span><span class="p">,</span><span class="o">-</span><span class="mi">375</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_26_0.png" src="../_images/notebooks_timesoft_demo_26_0.png" />
+</div>
+</div>
+<p>Note that if you use <code class="docutils literal notranslate"><span class="pre">Timestream.get_xf</span></code> or <code class="docutils literal notranslate"><span class="pre">Timestream.get_cr</span></code> to request the index of a detector not present in the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance, an error will be raised:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">/var/folders/r4/gx0h7bk50dd0zv65hb5f4gb00000gn/T/ipykernel_98172/3624471615.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>idx <span class="ansi-blue-fg">=</span> ts_demo<span class="ansi-blue-fg">.</span>get_xf<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/helpers/_class_bases.py</span> in <span class="ansi-cyan-fg">get_xf</span><span class="ansi-blue-fg">(self, x, f)</span>
+<span class="ansi-green-intense-fg ansi-bold">     42</span>         indices <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>nonzero<span class="ansi-blue-fg">(</span>matches<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     43</span>         <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>indices<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">==</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 44</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;xf pair not found&#39;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     45</span>         <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>indices<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     46</span>             warnings<span class="ansi-blue-fg">.</span>warn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;More than one instance of xf=({},{}) found&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span>f<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: xf pair not found
+</pre></div></div>
+</div>
+</section>
+<section id="Processing-the-Data">
+<h1>Processing the Data<a class="headerlink" href="#Processing-the-Data" title="Permalink to this headline">¶</a></h1>
+<p>The main use of the timestream class is to process timestream data for flagging and cleaning. There are many built in features, but keep in mind that since timestream is a class, it can be extended, and you can create your own class based on it that includes additional capabilities.</p>
+<p>The analysis methods provided by the timestream class are extensively documented, so we won’t go into great detail here. The following just shows an example of how they can be used to provide some intuition.</p>
+<p>We can start by making a map from the data in one of our detectors to get an intuition for what is going on. The <code class="docutils literal notranslate"><span class="pre">Timestream.make_map_det</span></code> method quickly maps and plots an image of the data from a specified detector. Note that this is a tool for quickly visualizing the data, more sophisticated mapping of all detectors comes later in the process.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Making a basic map&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map_det</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="n">pixel</span><span class="o">=</span><span class="mf">.002</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Make a quicklook map of xf=(7,47)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Making a basic map
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/gridding_utils.py:161: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  np.add.at(GRID,np.split(data_pos_mod,n,axis=1),np.expand_dims(data_value,1))
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:1804: RuntimeWarning: invalid value encountered in true_divide
+  self.map_det = (grids[:,:,1]/grids[:,:,0]).T
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_30_2.png" src="../_images/notebooks_timesoft_demo_30_2.png" />
+</div>
+</div>
+<p>This isn’t pretty - the vertical streak in the middle is from the initial movement of the telescope as it moved to the starting position for the map. <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> has some methods to identify when the telescope is observing the field in the intended scan pattern and remove data taken at other times. It can also do a variety of other cleaning tasks:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identifying Scans&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_obs_flag</span><span class="p">()</span> <span class="c1"># Get rid of points where the telescope wasn&#39;t in an &quot;observing&quot; mode</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">flag_scans</span><span class="p">()</span> <span class="c1"># Identify individual scans across the map</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_scan_flag</span><span class="p">()</span> <span class="c1"># If data didn&#39;t appear to belong to a scan, drop it</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_short_scans</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Remove anything that appears to short to be a real scan</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_end_scans</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">n_finish</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Remove the first few scans and last few scans (ie top and bottom of the map)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_scan_edge</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_finish</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Remove a few data points from the edges of the scan, where the telescope may still be accelerating</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Making a basic map&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map_det</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="n">pixel</span><span class="o">=</span><span class="mf">.002</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Make a quicklook map of xf=(7,47)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Identifying Scans
+Making a basic map
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:747: UserWarning: Warning: scan direction is unknown, assuming RA
+  warnings.warn(&#34;Warning: scan direction is unknown, assuming RA&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_32_2.png" src="../_images/notebooks_timesoft_demo_32_2.png" />
+</div>
+</div>
+<p>Now we can at least see Mars (the smudge in the middle), but there are streaks across the map that we still don’t want. These are caused by detector and atmospheric fluctuations. We can filter these out to make a better looking map:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtering&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">filter_scan</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Remove a 1st degree plynomial from each scan</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Making a basic map&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map_det</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="n">pixel</span><span class="o">=</span><span class="mf">.002</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Make a quicklook map of xf=(7,47)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Filtering
+Making a basic map
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_34_1.png" src="../_images/notebooks_timesoft_demo_34_1.png" />
+</div>
+</div>
+<p>This is a significant improvement. We can see what happened by looking at the timestream of the raw data compared to the processed data (when they’ve been saved, the un-editied timestream and data are saved as <code class="docutils literal notranslate"><span class="pre">Timestream.t_copy</span></code> and <code class="docutils literal notranslate"><span class="pre">Timestream.data_copy</span></code>):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">fig</span><span class="p">,[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Full Timestream&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zoomed In&#39;</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">225</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="c1"># Plot raw data with median removed to make it easy to compare to the processed data:</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the processed data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Processed&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Processed&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_36_0.png" src="../_images/notebooks_timesoft_demo_36_0.png" />
+</div>
+</div>
+<p>The processed timestream still shows some oscillations, but is already greatly improved compared to the raw data. For scientific analysis we will need more careful filtering. But for the time being, we can play around with the polynomial order we fit to each scan to see if that results in further improvements. We’ll reset our data and then re-run our processing with 5th degree polynomial filter:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">first_degree_filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="c1"># Save a copy of the results of the 1st degree filtering</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span> <span class="c1"># Then return data to original state, before our processing</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identifying Scans&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_obs_flag</span><span class="p">()</span> <span class="c1"># Get rid of points where the telescope wasn&#39;t in an &quot;observing&quot; mode</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">flag_scans</span><span class="p">()</span> <span class="c1"># Identify individual scans across the map</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_scan_flag</span><span class="p">()</span> <span class="c1"># If data didn&#39;t appear to belong to a scan, drop it</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_short_scans</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Remove anything that appears to short to be a real scan</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_end_scans</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">n_finish</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Remove the first few scans and last few scans (ie top and bottom of the map)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">remove_scan_edge</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_finish</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Remove a few data points from the edges of the scan, where the telescope may still be accelerating</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtering&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">filter_scan</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Remove a 5th degree plynomial from each scan</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Making a basic map&quot;</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map_det</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="n">pixel</span><span class="o">=</span><span class="mf">.002</span><span class="p">,</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Make a quicklook map of xf=(7,47)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Identifying Scans
+Filtering
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:747: UserWarning: Warning: scan direction is unknown, assuming RA
+  warnings.warn(&#34;Warning: scan direction is unknown, assuming RA&#34;)
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:1533: UserWarning: Filtering already applied, this filter will be applied on top of previous results
+  warnings.warn(&#34;Filtering already applied, this filter will be applied on top of previous results&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Making a basic map
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/gridding_utils.py:161: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  np.add.at(GRID,np.split(data_pos_mod,n,axis=1),np.expand_dims(data_value,1))
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:1804: RuntimeWarning: invalid value encountered in true_divide
+  self.map_det = (grids[:,:,1]/grids[:,:,0]).T
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_38_4.png" src="../_images/notebooks_timesoft_demo_38_4.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Full Timestream&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zoomed In&#39;</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">225</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="c1"># Plot raw data with median removed to make it easy to compare to the processed data:</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the old processed data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">first_degree_filtered</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;1st Degree&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">first_degree_filtered</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;1st Degree&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the processed data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;5th Degree&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;5th Degree&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_39_0.png" src="../_images/notebooks_timesoft_demo_39_0.png" />
+</div>
+</div>
+</section>
+<section id="Coordinate-Systems">
+<h1>Coordinate Systems<a class="headerlink" href="#Coordinate-Systems" title="Permalink to this headline">¶</a></h1>
+<p>TIME data is natively recorded in “apparent” coordinates, i.e. the coordinates on the real sky at a given date and time where the observations were made. Because these coordinates change over time, it is typically useful to convert data from apparent coordinates to a more meaningful system, such as the coordinates where a point in space would have appeared on January 1, 2000. This coordinate system is called “J2000”, and is the standard used throughout astronomy for reporting the location of
+sources in the sky.</p>
+<p>The current system in which the <code class="docutils literal notranslate"><span class="pre">Timestream.ra</span></code> and <code class="docutils literal notranslate"><span class="pre">Timestream.dec</span></code> are represented is saved in the header as ‘epoch’. To convert our dataset from apparent to J2000 coordinates, we can use the <code class="docutils literal notranslate"><span class="pre">Timestream.convert_coordinates</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The coordinates for our data were in the &#39;</span><span class="si">{}</span><span class="s2">&#39; frame&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]))</span>
+
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">convert_coordinates</span><span class="p">(</span><span class="s1">&#39;J2000&#39;</span><span class="p">)</span> <span class="c1"># Convert to J2000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now they are in the &#39;</span><span class="si">{}</span><span class="s2">&#39; frame&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The coordinates for our data were in the &#39;apparent&#39; frame
+Now they are in the &#39;J2000&#39; frame
+</pre></div></div>
+</div>
+<p>For our calibration image of Mars, the coordinate system does not really matter, but for making processing data for scientific analyses, ensuring the data is in the right coordinates is importang.</p>
+<p>To switch back to apparent coordinates, we simply do the following:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The coordinates for our data were in the &#39;</span><span class="si">{}</span><span class="s2">&#39; frame&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]))</span>
+
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">convert_coordinates</span><span class="p">(</span><span class="s1">&#39;apparent&#39;</span><span class="p">)</span> <span class="c1"># Convert to J2000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now they are in the &#39;</span><span class="si">{}</span><span class="s2">&#39; frame&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The coordinates for our data were in the &#39;J2000&#39; frame
+Now they are in the &#39;apparent&#39; frame
+</pre></div></div>
+</div>
+</section>
+<section id="Generating-Maps">
+<h1>Generating Maps<a class="headerlink" href="#Generating-Maps" title="Permalink to this headline">¶</a></h1>
+<p>The end goal of a timestream analysis is often to generate an image of the mapped region. Maps, along with one dimensional ‘linemaps’ are the level 2 data products of TIME. The <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class can make these data products and also has a shorthand for creating the <code class="docutils literal notranslate"><span class="pre">timesoft.Map</span></code> and <code class="docutils literal notranslate"><span class="pre">timesoft.LineMap</span></code> objects that are purpose built for further processing and analyzing data in this form. To begin with, let’s generate maps for all of our detectors:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map</span><span class="p">(</span><span class="n">pixel</span><span class="o">=</span><span class="mf">0.002</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/gridding_utils.py:161: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  np.add.at(GRID,np.split(data_pos_mod,n,axis=1),np.expand_dims(data_value,1))
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:1702: RuntimeWarning: invalid value encountered in true_divide
+  maps /= grids[:,:,-1].T
+</pre></div></div>
+</div>
+<p>This simultaneously maps all of our loaded detectors and creates an instance of the <code class="docutils literal notranslate"><span class="pre">Map</span></code> class, which is stored (for now) as an attribute of the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class: <code class="docutils literal notranslate"><span class="pre">Timestream.Maps</span></code>.</p>
+<p>Timestream has a few methods for visualizing mapped data, the primary one is the <code class="docutils literal notranslate"><span class="pre">Timestream.plot_map</span></code> method, which can be used as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">xf</span> <span class="ow">in</span> <span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Map of detector xf=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xf</span><span class="p">))</span>
+    <span class="n">ts_demo</span><span class="o">.</span><span class="n">plot_map</span><span class="p">(</span><span class="n">xf</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(0, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_1.png" src="../_images/notebooks_timesoft_demo_47_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(1, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_3.png" src="../_images/notebooks_timesoft_demo_47_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(2, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_5.png" src="../_images/notebooks_timesoft_demo_47_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(3, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_7.png" src="../_images/notebooks_timesoft_demo_47_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(4, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_9.png" src="../_images/notebooks_timesoft_demo_47_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(5, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_11.png" src="../_images/notebooks_timesoft_demo_47_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(6, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_13.png" src="../_images/notebooks_timesoft_demo_47_13.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(7, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_15.png" src="../_images/notebooks_timesoft_demo_47_15.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(8, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_17.png" src="../_images/notebooks_timesoft_demo_47_17.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(9, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_19.png" src="../_images/notebooks_timesoft_demo_47_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(10, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_21.png" src="../_images/notebooks_timesoft_demo_47_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(11, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_23.png" src="../_images/notebooks_timesoft_demo_47_23.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(12, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_25.png" src="../_images/notebooks_timesoft_demo_47_25.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(13, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_27.png" src="../_images/notebooks_timesoft_demo_47_27.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(14, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_29.png" src="../_images/notebooks_timesoft_demo_47_29.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(15, 47)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_47_31.png" src="../_images/notebooks_timesoft_demo_47_31.png" />
+</div>
+</div>
+<p>Plotting all of our maps, we can see that many detectors are turned off completely, a few are reporting data but not responding to the sky, and about 5 contain images of Mars.</p>
+<p>Let’s restrict our analysis to just the good detectors. To do that we use the <code class="docutils literal notranslate"><span class="pre">Timestream.restrict_detectors</span></code> method to specify the detectors we want to keep (note that this will remove all data for the other detectors for the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance, including any stored copy).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">good_detectors</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">6</span><span class="p">,</span><span class="mi">47</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">restrict_detectors</span><span class="p">(</span><span class="n">good_detectors</span><span class="p">,</span><span class="n">det_coord_mode</span><span class="o">=</span><span class="s1">&#39;xf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>With that, we can plot only our good detectors using the same code as before. We can noe easily see how Mars moves across the focal plane in the detectors from five different feedhorns.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">xf</span> <span class="ow">in</span> <span class="n">ts_demo</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Map of detector xf=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xf</span><span class="p">))</span>
+    <span class="n">ts_demo</span><span class="o">.</span><span class="n">plot_map</span><span class="p">(</span><span class="n">xf</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(1, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_51_1.png" src="../_images/notebooks_timesoft_demo_51_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(2, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_51_3.png" src="../_images/notebooks_timesoft_demo_51_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(4, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_51_5.png" src="../_images/notebooks_timesoft_demo_51_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(6, 47)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_51_7.png" src="../_images/notebooks_timesoft_demo_51_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Map of detector xf=(7, 47)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_51_9.png" src="../_images/notebooks_timesoft_demo_51_9.png" />
+</div>
+</div>
+<p>Many more map-space analyses are possible, but those are the purview of tools and documentation for level 2 data. We can leave off here by saving our maps for additional analysis in the future with the <code class="docutils literal notranslate"><span class="pre">Timestream.write_map</span></code> method:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;ts_demo_maps.npz&quot;</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">write_map</span><span class="p">(</span><span class="n">path_to_processed_data</span><span class="o">+</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Generating-Line-Maps">
+<h1>Generating Line Maps<a class="headerlink" href="#Generating-Line-Maps" title="Permalink to this headline">¶</a></h1>
+<p>Our planned science observations involve making one dimensional scans back and forth across a field. These line scans are often best analyzed by binning all the samples along a single positional axis (typically the scan directio). The <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class can make these data products using the <code class="docutils literal notranslate"><span class="pre">Timestream.make_1d</span></code> method, which also creates a <code class="docutils literal notranslate"><span class="pre">timesoft.LineMap</span></code> instance, stored in the <code class="docutils literal notranslate"><span class="pre">Timestream.LineMaps</span></code> attribute.</p>
+<p>Our Mars data is natively in two dimensions, but we can still analyze it along only the scan direction. To start with, let’s cut our timestream down to only include declination ranges close to Mars. From the maps we made earlier, it appears that the flux from Mars all falls between about -23.73 and -23.71 degrees in declination.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">_remove_samples</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">dec</span><span class="o">&lt;-</span><span class="mf">23.71</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">_remove_samples</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">dec</span><span class="o">&gt;-</span><span class="mf">23.73</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>We can verify this worked by remaking our maps and plotting the results. Note that doing so will overwrite our old maps, so if we want to keep whatever maps we’ve already made, we’ll need to save them before doing this.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">make_map</span><span class="p">(</span><span class="n">pixel</span><span class="o">=</span><span class="mf">0.002</span><span class="p">)</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">plot_map</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_57_0.png" src="../_images/notebooks_timesoft_demo_57_0.png" />
+</div>
+</div>
+<p>That looks good enough for this demonstration. We can now make our line maps:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">make_1d</span><span class="p">(</span><span class="n">pixel</span><span class="o">=</span><span class="mf">.001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:747: UserWarning: Warning: scan direction is unknown, assuming RA
+  warnings.warn(&#34;Warning: scan direction is unknown, assuming RA&#34;)
+</pre></div></div>
+</div>
+<p>We can visualize the data for an arbitrary number of detectors using the <code class="docutils literal notranslate"><span class="pre">Timestream.plot_1d</span></code> method. This method takes a list of detectors to plot and produces plots of the average counts from each detector as a function of position.</p>
+<p>Note that our data has not been flux calibrated, and so the scale for each detector can vary arbitrarily relative to the others.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">ts_demo</span><span class="o">.</span><span class="n">plot_1d</span><span class="p">(</span><span class="o">*</span><span class="n">good_detectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_61_0.png" src="../_images/notebooks_timesoft_demo_61_0.png" />
+</div>
+</div>
+<p>Saving our linemaps can be accomplished with the <code class="docutils literal notranslate"><span class="pre">Timestream.write_1d</span></code> method:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;ts_demo_1d.npz&quot;</span>
+<span class="n">ts_demo</span><span class="o">.</span><span class="n">write_1d</span><span class="p">(</span><span class="n">path_to_processed_data</span><span class="o">+</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Extending-the-Timestream-Class">
+<h1>Extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> Class<a class="headerlink" href="#Extending-the-Timestream-Class" title="Permalink to this headline">¶</a></h1>
+<p>One of the key reasons for construting our data analysis tools around a set of classes (<code class="docutils literal notranslate"><span class="pre">Timestream</span></code>, <code class="docutils literal notranslate"><span class="pre">Map</span></code>, <code class="docutils literal notranslate"><span class="pre">Linemap</span></code>, etc.) is that these objects can easily be expanded upon to add additional features.</p>
+<p>There are many potential cases where it may be useful to add features. An immediate need is in the area of atmospheric corrections, where more sophisticated methods for filtering out atmospheric fluctuations are currently under development. Here we provide a template for extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class with a new atmospheric filtering method (note that the method demonstrated here is actually just a simplification of the current one), to demonstrate how to go about extending the
+<code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">TimestreamExtension</span><span class="p">(</span><span class="n">Timestream</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">filter_scan_poly_2nd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function iterates through each detector and removes a 2nd degree polynomial from each scan&quot;&quot;&quot;</span>
+
+        <span class="c1"># Iterate through detectors and channels</span>
+        <span class="k">for</span> <span class="n">xf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;xf_coords&#39;</span><span class="p">]:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="n">xf</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># Iterate through each scan</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_flags</span><span class="p">):</span>
+                <span class="n">clean_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_flags</span><span class="o">==</span><span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Determine which samples are part of scan i</span>
+                <span class="n">t_mid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">clean_inds</span><span class="p">])</span> <span class="c1"># Median time in the scan for centering the polynomial fit</span>
+
+                <span class="n">fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">clean_inds</span><span class="p">]</span><span class="o">-</span><span class="n">t_mid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="n">clean_inds</span><span class="p">],</span> <span class="n">deg</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Fit the polynomial</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="n">clean_inds</span><span class="p">]</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">clean_inds</span><span class="p">]</span><span class="o">-</span><span class="n">t_mid</span><span class="p">)</span> <span class="c1"># Remove from the data</span>
+
+</pre></div>
+</div>
+</div>
+<p>We can now repeat our initial data processing, but using the new filtering method. In the following, the only changes I make to the scripts used above are</p>
+<ol class="arabic simple">
+<li><p>Replacing <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> with <code class="docutils literal notranslate"><span class="pre">TimestreamExtension</span></code> when initializing the class</p></li>
+<li><p>Giving the <code class="docutils literal notranslate"><span class="pre">TimestreamExtension</span></code> instance a different name, <code class="docutils literal notranslate"><span class="pre">ts_ext_demo</span></code> (this is only done so a reference can be kept to <code class="docutils literal notranslate"><span class="pre">ts_demo</span></code> for comparing with the revious results)</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">ts_ext_demo.filter_scan_poly_2d</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ts_demo.filter_scan</span></code></p></li>
+</ol>
+<p>This demonstrates the simplicity of adding new functionality and modifying pipelines built around the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%capture</span> _
+<span class="c1"># Load only the detectors from the 7th feedhorn:</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">7</span><span class="p">,</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">)]</span>
+<span class="n">ts_ext_demo</span> <span class="o">=</span> <span class="n">TimestreamExtension</span><span class="p">(</span><span class="n">path_to_raw_data</span><span class="p">,</span><span class="n">mc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">xf</span><span class="o">=</span><span class="n">xf</span><span class="p">,</span><span class="n">store_copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identifying Scans&quot;</span><span class="p">)</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">remove_obs_flag</span><span class="p">()</span> <span class="c1"># Get rid of points where the telescope wasn&#39;t in an &quot;observing&quot; mode</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">flag_scans</span><span class="p">()</span> <span class="c1"># Identify individual scans across the map</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">remove_scan_flag</span><span class="p">()</span> <span class="c1"># If data didn&#39;t appear to belong to a scan, drop it</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">remove_short_scans</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Remove anything that appears to short to be a real scan</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">remove_end_scans</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">n_finish</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Remove the first few scans and last few scans (ie top and bottom of the map)</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">remove_scan_edge</span><span class="p">(</span><span class="n">n_start</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_finish</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Remove a few data points from the edges of the scan, where the telescope may still be accelerating</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtering&quot;</span><span class="p">)</span>
+<span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">filter_scan_poly_2nd</span><span class="p">()</span> <span class="c1"># Remove a 2nd degree plynomial from each scan</span>
+
+<span class="c1"># Compare the results</span>
+<span class="n">fig</span><span class="p">,[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Full Timestream&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time [s]&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Counts [arb]&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zoomed In&#39;</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span><span class="mi">225</span><span class="p">),</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="c1"># Plot raw data with median removed to make it easy to compare to the processed data:</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="o">-</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data_copy</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)]),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the processed data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;filter_scan result&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;filter_scan result&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the processed data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;filter_scan_poly_2nd result&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t</span><span class="o">-</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">t_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ts_ext_demo</span><span class="o">.</span><span class="n">get_xf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">)],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;filter_scan_poly_2nd result&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Identifying Scans
+Filtering
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/rpkeenan/Dropbox/4_research/3.1_TIME_analysis/TIME-analysis/timesoft/timestream/timestream_tools.py:747: UserWarning: Warning: scan direction is unknown, assuming RA
+  warnings.warn(&#34;Warning: scan direction is unknown, assuming RA&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_timesoft_demo_68_2.png" src="../_images/notebooks_timesoft_demo_68_2.png" />
+</div>
+</div>
+<p>Having many different classes derived from <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> can be confusing and inefficient. If you are developing extensions of the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class that you believe will be of general use, you can use this model for developing new code, but once you think it is ready for prime time, you should try to integrate it directly into the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class’s source code.</p>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../maps.html" class="btn btn-neutral float-right" title="Data Level 2 - Working with Maps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../timestream.html" class="btn btn-neutral float-left" title="Level 1: Working with Timestream Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, TIME Collaboration.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

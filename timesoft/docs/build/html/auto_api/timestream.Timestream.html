@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>timestream.Timestream &mdash; timesoft 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/small_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="timestream.Timestream.get_xf" href="timestream.Timestream.get_xf.html" />
+    <link rel="prev" title="raw.get_data" href="raw.get_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> timesoft
+          
+
+          
+            
+            <img src="../_static/time_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing <code class="docutils literal notranslate"><span class="pre">timesoft</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contrib_rules.html">Contributing to the TIMESOFT Code and Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#some-guiding-principles">Some Guiding Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#doc-string-formatting">Doc String Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#basics-of-sphinx-documentation">Basics of Sphinx Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contrib_rules.html#jupyter-ipython-notebooks-with-sphinx">Jupyter/IPython Notebooks with Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contrib_rules.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Structures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs.html">Data Structures Used by the TIME Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_0.html">Level 0: Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_0.html#contents-of-the-netcdf-files">Contents of the netCDF Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#header-variables">Header Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#housekeeping-variables">Housekeeping Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#detector-variables">Detector Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#telescope-telemetry-variables">Telescope Telemetry Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_structs_0.html#k-mirror-telemetry-variables">K-Mirror Telemetry Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_1.html">Level 1: Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#contents-of-the-timestream-files">Contents of the Timestream Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_1.html#telescope-flag-values">Telescope Flag Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_2.html">Level 2: Maps and Linemaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#contents-of-the-map-and-linemap-files">Contents of the Map and LineMap Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_structs_2.html#the-extras-attribute">The ‘Extras’ Attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_structs_3.html">Level 3: Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../raw.html">Level 0: Working with the Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#direct-interface-with-netcdf-data">Direct Interface with netCDF Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#generating-a-timestream">Generating A Timestream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raw.html#documentation-for-the-raw-module">Documentation for the <code class="docutils literal notranslate"><span class="pre">raw</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../timestream.html">Level 1: Working with Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#the-timestream-class">The Timestream Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#manipulating-timestream-data">Manipulating Timestream Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-accessing-specific-detectors">Methods for Accessing Specific Detectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-tidying-up-scans-and-headers">Methods for Tidying Up Scans and Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-analyzing-timestreams">Methods for Analyzing Timestreams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-producing-level-2-data-products">Methods for Producing Level 2 Data Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../timestream.html#methods-for-saving-data-products">Methods for Saving Data Products</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../timestream.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html">Loading Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Saving-and-Loading-Processed-Timestream-Data">Saving and Loading Processed Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Interacting-with-the-Timestream-Data">Interacting with the Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Processing-the-Data">Processing the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Coordinate-Systems">Coordinate Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Generating-Maps">Generating Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Generating-Line-Maps">Generating Line Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/timesoft_demo.html#Extending-the-Timestream-Class">Extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maps.html">Data Level 2 - Working with Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../powspec.html">Data Level 3 - Working with the Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api.html">Level 0 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="raw.get_data.html">raw.get_data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html#level-1-data-api">Level 1 Data API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#timesoft-timestream">timesoft.Timestream</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">timestream.Timestream</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#accessing-detectors">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.restrict_detectors.html">timestream.Timestream.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#tidying-scan-information">Tidying Scan Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.header_entry.html">timestream.Timestream.header_entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#analyzing-timestreams">Analyzing Timestreams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan_det_mask.html">timestream.Timestream.filter_scan_det_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#producing-maps-and-1d-binned-data">Producing Maps and 1D Binned Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#saving-data">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#level-2-data-api">Level 2 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#timesoft-map-and-timesoft-linemap">timesoft.Map and timesoft.LineMap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="maps.Map.html">maps.Map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.write.html">maps.Map.write</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#id1">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.restrict_detectors.html">maps.Map.restrict_detectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.LineMap.get_xf.html">maps.LineMap.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.LineMap.get_cr.html">maps.LineMap.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.LineMap.restrict_detectors.html">maps.LineMap.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#visualizing-maps">Visualizing Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.LineMap.plot.html">maps.LineMap.plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#id2">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="maps.Map.write.html">maps.Map.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.LineMap.write.html">maps.LineMap.write</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">timesoft</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">Level 0 Data API</a> &raquo;</li>
+        
+      <li>timestream.Timestream</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/auto_api/timestream.Timestream.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="timestream-timestream">
+<h1>timestream.Timestream<a class="headerlink" href="#timestream-timestream" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="timestream.Timestream">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">timestream.</span></span><span class="sig-name descname"><span class="pre">Timestream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_in</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2022.dev.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raisenotel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#timestream.Timestream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to hold timestream data and perform data reduction</p>
+<p>The Timestream class loads data from a raw data file and
+provides numerous methods for processing and analyzing it. 
+It is initialized by providing a path to the folder containing
+the raw data to be analyzed.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance can be initialized two ways. First
+it can be created from a directory containing the raw netCDF
+files for a single TIME observation. In this case the the 
+class can be initialized by specifying the path of the 
+directory containing the raw data in the <cite>path</cite> parameter, 
+and the MCE to load in the <cite>mc</cite> parameter. A number of 
+additional options are available to control the exact data
+loaded and some other behaviors.</p>
+<p>Alternatively, a <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> instance can be initialized
+from a pre-existing timestream data file (saved as a .npz 
+document), by specifying the path and filename to the 
+file in the <cite>path</cite> parameter.</p>
+<p>The initialization of a class will guess which of these two
+modes to use based on input of the <code class="docutils literal notranslate"><span class="pre">path</span></code> parameter. 
+Paths ending in ‘.npz’ will be assumed to be level 1
+timestream files, while anything else will be assumed
+to be level 0 raw data files.</p>
+<p>The resulting object will be a class instance containing the relevant
+data (positions in ra/dec and az/el, detector counts, flags, and some
+header information). These can either be accessed directly, or there 
+are a numerous data reduction methods associated with the class 
+instance that can be used for further data processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>The path to the raw data directory or timestream file
+to be loaded.</p>
+</dd>
+<dt><strong>files_in</strong><span class="classifier">list or None, optional</span></dt><dd><p>For loading raw data only - if a timestream file is loaded
+it is ignored.
+If specified this should be a list containing the names of the 
+files in the directory (as specified in <cite>path</cite>) to be loaded. If 
+unspecified (or None), all files ending in ‘.nc’ will be loaded.</p>
+</dd>
+<dt><strong>mc</strong><span class="classifier">{0, 1}, default=0</span></dt><dd><p>Determines which MCE to load.
+For loading raw data only - if a timestream file is loaded
+it is ignored and the MCE can be determined from the header.</p>
+</dd>
+<dt><strong>xf</strong><span class="classifier">list of tuples, optional</span></dt><dd><p>Can be used to specify the detectors to load in terms of the xf coordinates.
+If specified, it should be a list of xf pairs e.g. <code class="docutils literal notranslate"><span class="pre">xf=[(1,1),</span> <span class="pre">(15,2),</span> <span class="pre">(12,29)]</span></code>, 
+and only data for those detectors will be returned. If not specified data for all 
+detectors available in the data will be returned. If specified for a 
+timestream file and some of the detectors listed are not present in the
+file, they will be ignored. Only one of xf or cr can be used
+(the other should be set as None or left out of the function call).</p>
+</dd>
+<dt><strong>cr</strong><span class="classifier">list of tuples, optional</span></dt><dd><p>Can be used to specify the detectors to load in terms of the muxcr coordinates.
+<cite>cr</cite> works analogously to <cite>xf</cite> except for the indexing system used. 
+Only one of xf or cr can be used (the other should be set to None or left 
+out of the function call).</p>
+</dd>
+<dt><strong>version</strong><span class="classifier">{‘2022.dev.1’, ‘2022.dev.0’, ‘2019.final’, ‘2019.dev.1’, ‘2019.dev.0’}, optional</span></dt><dd><p>For loading raw data only - if a timestream file is loaded
+it is ignored.
+Specifies which version of the raw data file structure is in use.
+The default is ‘2022.dev.1’ which works for most data taken during 
+the 2022 engineering run. Other versions may be needed for older data:
+‘2022.dev.0’ for a few very early observations from the 2022 run; 
+‘2019.final’ for data from 2019-03-15 to end of 2019 engineering run;
+‘2019.dev.1’ for data from 2019-03-14 or earlier; and ‘2019.dev.0’ for
+very first data from 2019 run</p>
+</dd>
+<dt><strong>store_copy</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, then an untouched copy of the data will be stored in parallel
+to the editable version. This copy can then be restored using the <code class="docutils literal notranslate"><span class="pre">Timestream.reset()</span></code>
+method should you wish to undo your data edits, making it useful for 
+interactively reducing the data. Default is False. 
+If loading a timestream file which does not already contain a copy 
+of the data, this parameter is ignored</p>
+</dd>
+<dt><strong>raisenotel</strong><span class="classifier">bool, default=False</span></dt><dd><p>For loading raw data only - if a timestream file is loaded
+it is ignored.
+Determines the handling of files with no valid telescope telemetry data.
+If <cite>raisenotel=True</cite>, a ValueError will be raised. If <cite>raisenotel=False</cite>
+no error will be raised, but the returned telescope data (ra, dec, az, el,
+and tel_flags) will be arrays of filled with <cite>np.nan</cite>.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘auto’,’raw’,’timestream’}, default=’auto’</span></dt><dd><p>This specifies whether the path is for raw data or timestream
+data. The default, is ‘auto’ which tries to determine what 
+type of data is being loaded based on the ending of the 
+<cite>path</cite> string.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><strong>Loading Raw Data Files</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class can be initialized by specifying a directory 
+containing the netCDF files for a single TIME observation. If data 
+was taken in spring 2022, the path is the only argument required. 
+Otherwise the “version” parameter should be specified. Optionally 
+the loaded data can be restricted to a subset of the files in the 
+path using the files_in parameter, and to a subset of detectors using 
+the xf or rc prameters.</p>
+<p>For command line use, it may be useful to set “store_copy=True” when
+initializing the class - this will cause an unedited version of the
+timestream to be stored, making it possible to reset the data to its 
+original form without the need to re-load. For scripts this can usually
+be left in its default (False), as there are fewer use cases for 
+resetting the data.</p>
+<p><strong>Loading Processed Timestream Files</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class can also be initialized by specifying the
+path to an existing timestream file. In this case, many of the 
+__init__ parameters used to control the loading of raw data are 
+irrelevant, in particular, <cite>mc</cite>, <cite>files_in</cite>, and <cite>version</cite> are 
+ignored, as this information was already set when the timestream
+was first created (and recoreded in the header of the timestream 
+file). Detectors can still be specified with the <cite>xf</cite> and <cite>cr</cite>
+parameters, but if a detector is not present in the saved timestream
+it will be skipped. Similarly, an unedited copy of the data can
+be loaded with <cite>store_copy</cite>, but only if it was previously saved 
+in the timestream file.</p>
+<p><strong>Contents of the</strong> <code class="docutils literal notranslate"><span class="pre">Timestream.header</span></code></p>
+<p>To do</p>
+<p><strong>Keeping Track of Detector Indices</strong></p>
+<p>The detector data is stored in the <code class="docutils literal notranslate"><span class="pre">Timestream.data</span></code> 
+attribute, which is a 2d array of shape 
+(len(xf), len(t)). Because the number of detectors 
+loaded is flexible, the index in this array corresponding
+to a given detector can varry between different 
+instances of the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> class. To handle this
+two helper methods are defined as part of the class:</p>
+<dl class="simple">
+<dt>get_xf(x, f)</dt><dd><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">Timestream.data</span></code> array 
+corresponding to the detector with xf indices (x,f)</p>
+</dd>
+<dt>get_cr(c, r)</dt><dd><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">Timestream.data</span></code> array 
+corresponding to the detector with muxcr indices (c,r)</p>
+</dd>
+</dl>
+<p>Additionally, any analysis methods which operate on a
+single detector are constructed to take detector indexing
+in xf or muxcr coordinates. Generally the call signatures
+for these functions will look something like 
+<code class="docutils literal notranslate"><span class="pre">Timestream.method(c1,c2[,other</span> <span class="pre">args],det_coord_mode='xf')</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">det_coord_mode</span></code> specifies whether the coordinates
+are given in xf or muxcr coordinates, and <code class="docutils literal notranslate"><span class="pre">(c1,</span> <span class="pre">c2)</span></code>
+are the coordinates of the detector in the specified coordinate 
+system.</p>
+<p><strong>Second Copy of the Data with</strong> <code class="docutils literal notranslate"><span class="pre">store_copy=True</span></code></p>
+<p>When a timestream is initialized with <code class="docutils literal notranslate"><span class="pre">store_copy=True</span></code> an 
+second copy of many attributes is created, which will be left
+untouched by the data processing methods. These can be used
+to compare the timestream before and after some processing tasks,
+but are mostly useful to enable the <code class="docutils literal notranslate"><span class="pre">Timestream.reset()</span></code>
+method, which will undo any changes made to the data and 
+restore it to its original form.</p>
+<p>Whether a timestream contains this second copy can be checked
+by inspecting the <code class="docutils literal notranslate"><span class="pre">Timestream.header['flags']['store_copy']</span></code> 
+attribute. If a stored copy exists, it will produce the follwing 
+additional attributes:</p>
+<dl class="simple">
+<dt>t_copy<span class="classifier">ndarray</span></dt><dd><p>Unedited copy of <cite>t</cite></p>
+</dd>
+<dt>ra_copy, dec_copy, az_copy, el_copy, tel_flags_copy<span class="classifier">ndarray </span></dt><dd><p>Unedited copies of <cite>ra</cite>, <cite>dec</cite>, <cite>az</cite>, <cite>el</cite>, and <cite>tel_flags</cite></p>
+</dd>
+<dt>data_copy<span class="classifier">ndarray</span></dt><dd><p>Unedited copy of <cite>data</cite></p>
+</dd>
+</dl>
+<p><strong>Performance and Debugging</strong></p>
+<p>The slowest processes appear to be loading the data 
+from NCDF files, and filtering the scans. To reduce 
+issues with the first, an unmodified copy of the loaded 
+data can be stored permanently by setting 
+“store_copy=True”, and at any point you can restore 
+this using <code class="docutils literal notranslate"><span class="pre">Timestream.reset()</span></code>. This means you should 
+only have to load once. The filtering is slow because 
+it has to loop through each detector separately, if 
+you have ideas how to improve this let me know.</p>
+<p>Despite this, you should be able to get from raw data 
+to a full set of maps in only a few minutes.</p>
+<p>For testing settings, you can save time by filtering 
+and mapping only one detector using the following 
+methods:</p>
+<dl class="simple">
+<dt>filter_scan_det(x, f, n)</dt><dd><p>Speficy feed horn and channel with x, f and 
+polynomial degree with n</p>
+</dd>
+<dt>make_map_det(x, f, plot=True, pixel)</dt><dd><p>makes the single detector map and produces a 
+plot of it.</p>
+</dd>
+</dl>
+<p>These should work very quickly. You can also use
+muxcr indexing instead of x, f indexing. See the
+docs for these methods for more details.</p>
+<p>The filtering speed can also be improved by loading 
+only the desired set of detectors when initializing.</p>
+<p><strong>Attribute and Method Listings</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mc</strong><span class="classifier">{1, 0}</span></dt><dd><p>The MCE from which the data is taken</p>
+</dd>
+<dt><strong>header</strong><span class="classifier">dict</span></dt><dd><p>A dictionary containing header informatin and flags
+used in the analysis.</p>
+</dd>
+<dt><strong>t: ndarray</strong></dt><dd><p>One dimensional array containing the timestamp of 
+each sample. Times are given as unix times.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>An array of shape (len(xf), len(t)) which contains
+the readouts from each detector. The first index is
+ordered either by the order in which they were specified
+in the class initialization, or, if no detectors were
+specified, by increasing x then f.</p>
+</dd>
+<dt><strong>ra, dec</strong><span class="classifier">ndarray</span></dt><dd><p>Arrays containing the R.A. and declination associated 
+with each sample in the timestream.</p>
+</dd>
+<dt><strong>az, el</strong><span class="classifier">ndarray</span></dt><dd><p>Arrays containing the azimuth and elevation associated 
+with each sample in the timestream.</p>
+</dd>
+<dt><strong>tel_flags</strong><span class="classifier">ndarray</span></dt><dd><p>Array containing the ‘direction’ flags reported by the 
+telescope. The values and associated meanings are: 0 - 
+telescope is not on source (idle); 1 - telescope is 
+tracking the field center; 2 - telescope is moving in 
+the minus R.A. dirction; 3 - telescope is moving in 
+the plus R.A. direction; 4 - telescope is turning around</p>
+</dd>
+<dt><strong>scan_flags</strong><span class="classifier">ndarray</span></dt><dd><p>Initially an array of zeros. Once the timestream has been 
+broken up into individual scans across the field using
+<code class="docutils literal notranslate"><span class="pre">Timestream.flag_scans()</span></code>, it will contain the scan 
+number to which each sample has been assigned.</p>
+</dd>
+<dt><strong>scan_direction_flags</strong><span class="classifier">ndarray</span></dt><dd><p>Initially an array of zeros. Once the direction of scans
+has been determined it will contain that information
+(note this is now somewhat redundant with the flags attribute)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.get_xf.html#timestream.Timestream.get_xf" title="timestream.Timestream.get_xf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xf</span></code></a>(x, f)</p></td>
+<td><p>Determine the index corresponding to the detector with xf indices (x,f)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.get_cr.html#timestream.Timestream.get_cr" title="timestream.Timestream.get_cr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cr</span></code></a>(c, r)</p></td>
+<td><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">class.data</span></code> array corresponding to the detector with muxcr indices (c,r)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream._remove_samples.html#timestream.Timestream._remove_samples" title="timestream.Timestream._remove_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_remove_samples</span></code></a>(indices)</p></td>
+<td><p>Remove specified samples from a timestream</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.write.html#timestream.Timestream.write" title="timestream.Timestream.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(filepath[, store_copy, compress, ...])</p></td>
+<td><p>Save a timestream as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.write_map.html#timestream.Timestream.write_map" title="timestream.Timestream.write_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_map</span></code></a>(filepath[, compress, overwrite])</p></td>
+<td><p>Save generated maps as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.write_1d.html#timestream.Timestream.write_1d" title="timestream.Timestream.write_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_1d</span></code></a>(filepath[, compress, overwrite])</p></td>
+<td><p>Save generated 1d binned data as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.reset.html#timestream.Timestream.reset" title="timestream.Timestream.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Reset the timestream to undo the effects of any analysis methods applied.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.flag_scans.html#timestream.Timestream.flag_scans" title="timestream.Timestream.flag_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flag_scans</span></code></a>([dabs, dperp, scan_direction, ...])</p></td>
+<td><p>Identify individual scans of the telescope across the map region</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.renumber_scans.html#timestream.Timestream.renumber_scans" title="timestream.Timestream.renumber_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renumber_scans</span></code></a>()</p></td>
+<td><p>Reset the indexing of the scans so that they run continuously from 1 to n</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.remove_end_scans.html#timestream.Timestream.remove_end_scans" title="timestream.Timestream.remove_end_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_end_scans</span></code></a>([n_start, n_finish])</p></td>
+<td><p>Remove a speciied number of scans from the start or end of an observation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_direction.html#timestream.Timestream.remove_scan_direction" title="timestream.Timestream.remove_scan_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_direction</span></code></a>([keep_direction])</p></td>
+<td><p>Remove all scans not along a specified scan direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_edge.html#timestream.Timestream.remove_scan_edge" title="timestream.Timestream.remove_scan_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_edge</span></code></a>([n_start, n_finish])</p></td>
+<td><p>Remove samples at the edges of scans</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_flag.html#timestream.Timestream.remove_scan_flag" title="timestream.Timestream.remove_scan_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_flag</span></code></a>()</p></td>
+<td><p>Remove data segments that are not identified as part of a scan</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.remove_short_scans.html#timestream.Timestream.remove_short_scans" title="timestream.Timestream.remove_short_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_short_scans</span></code></a>([thresh])</p></td>
+<td><p>Remove scans with fewer than a specified number of samples</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_tel_flag.html#timestream.Timestream.remove_tel_flag" title="timestream.Timestream.remove_tel_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_tel_flag</span></code></a>([flags])</p></td>
+<td><p>Remove samples with specified values of <code class="docutils literal notranslate"><span class="pre">Timestream.flag</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.convert_coordinates.html#timestream.Timestream.convert_coordinates" title="timestream.Timestream.convert_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_coordinates</span></code></a>([newframe, lon, lat, height])</p></td>
+<td><p>Transform data between coordinate frames</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan_det.html#timestream.Timestream.filter_scan_det" title="timestream.Timestream.filter_scan_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan_det</span></code></a>(c1, c2[, n, exclude_max, ...])</p></td>
+<td><p>Polynomial filtering of detector counts</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan_det.html#timestream.Timestream.filter_scan_det" title="timestream.Timestream.filter_scan_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan_det</span></code></a>(c1, c2[, n, exclude_max, ...])</p></td>
+<td><p>Polynomial filtering of detector counts</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan.html#timestream.Timestream.filter_scan" title="timestream.Timestream.filter_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan</span></code></a>([mode, n, max_sep, ...])</p></td>
+<td><p>Polynomial filtering of all detectors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.make_map.html#timestream.Timestream.make_map" title="timestream.Timestream.make_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_map</span></code></a>([pixel, correct_xpix, ...])</p></td>
+<td><p>Make maps of all detectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.make_map_det.html#timestream.Timestream.make_map_det" title="timestream.Timestream.make_map_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_map_det</span></code></a>(c1, c2[, det_coord_mode, plot, ...])</p></td>
+<td><p>Quicklook map of a single detector</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.plot_map.html#timestream.Timestream.plot_map" title="timestream.Timestream.plot_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_map</span></code></a>(c1, c2[, det_coord_mode, savepath, ...])</p></td>
+<td><p>View map of single detector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.detector_grid.html#timestream.Timestream.detector_grid" title="timestream.Timestream.detector_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector_grid</span></code></a>([savepath, show])</p></td>
+<td><p>Creates a plot showing all detectors in a grid</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.make_1d.html#timestream.Timestream.make_1d" title="timestream.Timestream.make_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_1d</span></code></a>([pixel, axis, extras])</p></td>
+<td><p>Bin samples along a specified axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.plot_1d.html#timestream.Timestream.plot_1d" title="timestream.Timestream.plot_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_1d</span></code></a>(*coords[, det_coord_mode, savepath, ...])</p></td>
+<td><p>Make plots of detectors 1d binned data</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="timestream.Timestream.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_in</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2022.dev.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raisenotel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#timestream.Timestream.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#timestream.Timestream.__init__" title="timestream.Timestream.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(path[, files_in, mc, xf, cr, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.convert_coordinates.html#timestream.Timestream.convert_coordinates" title="timestream.Timestream.convert_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_coordinates</span></code></a>([newframe, lon, lat, height])</p></td>
+<td><p>Transform data between coordinate frames</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.detector_grid.html#timestream.Timestream.detector_grid" title="timestream.Timestream.detector_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector_grid</span></code></a>([savepath, show])</p></td>
+<td><p>Creates a plot showing all detectors in a grid</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan.html#timestream.Timestream.filter_scan" title="timestream.Timestream.filter_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan</span></code></a>([mode, n, max_sep, ...])</p></td>
+<td><p>Polynomial filtering of all detectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan_det.html#timestream.Timestream.filter_scan_det" title="timestream.Timestream.filter_scan_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan_det</span></code></a>(c1, c2[, n, exclude_max, ...])</p></td>
+<td><p>Polynomial filtering of detector counts</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.filter_scan_det_mask.html#timestream.Timestream.filter_scan_det_mask" title="timestream.Timestream.filter_scan_det_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_scan_det_mask</span></code></a>(c1, c2, mask_ra_bins, ...)</p></td>
+<td><p>Polynomial filtering of detector counts with source masking</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.flag_scans.html#timestream.Timestream.flag_scans" title="timestream.Timestream.flag_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flag_scans</span></code></a>([dabs, dperp, scan_direction, ...])</p></td>
+<td><p>Identify individual scans of the telescope across the map region</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.get_cr.html#timestream.Timestream.get_cr" title="timestream.Timestream.get_cr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cr</span></code></a>(c, r)</p></td>
+<td><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">class.data</span></code> array corresponding to the detector with muxcr indices (c,r)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.get_xf.html#timestream.Timestream.get_xf" title="timestream.Timestream.get_xf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_xf</span></code></a>(x, f)</p></td>
+<td><p>Determine the index corresponding to the detector with xf indices (x,f)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.header_entry.html#timestream.Timestream.header_entry" title="timestream.Timestream.header_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">header_entry</span></code></a>(key, value[, protect])</p></td>
+<td><p>Change the value of an item in the header</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.make_1d.html#timestream.Timestream.make_1d" title="timestream.Timestream.make_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_1d</span></code></a>([pixel, axis, extras])</p></td>
+<td><p>Bin samples along a specified axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.make_map.html#timestream.Timestream.make_map" title="timestream.Timestream.make_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_map</span></code></a>([pixel, correct_xpix, ...])</p></td>
+<td><p>Make maps of all detectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_map_az_el</span></code>([pixel])</p></td>
+<td><p>Make az-el space maps of all detectors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.make_map_det.html#timestream.Timestream.make_map_det" title="timestream.Timestream.make_map_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_map_det</span></code></a>(c1, c2[, det_coord_mode, plot, ...])</p></td>
+<td><p>Quicklook map of a single detector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.plot_1d.html#timestream.Timestream.plot_1d" title="timestream.Timestream.plot_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_1d</span></code></a>(*coords[, det_coord_mode, savepath, ...])</p></td>
+<td><p>Make plots of detectors 1d binned data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.plot_map.html#timestream.Timestream.plot_map" title="timestream.Timestream.plot_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_map</span></code></a>(c1, c2[, det_coord_mode, savepath, ...])</p></td>
+<td><p>View map of single detector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_end_scans.html#timestream.Timestream.remove_end_scans" title="timestream.Timestream.remove_end_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_end_scans</span></code></a>([n_start, n_finish])</p></td>
+<td><p>Remove a speciied number of scans from the start or end of an observation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_obs_flag</span></code>([flags])</p></td>
+<td><p>Remove samples with specified values of <code class="docutils literal notranslate"><span class="pre">Timestream.flag</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_direction.html#timestream.Timestream.remove_scan_direction" title="timestream.Timestream.remove_scan_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_direction</span></code></a>([keep_direction])</p></td>
+<td><p>Remove all scans not along a specified scan direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_edge.html#timestream.Timestream.remove_scan_edge" title="timestream.Timestream.remove_scan_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_edge</span></code></a>([n_start, n_finish])</p></td>
+<td><p>Remove samples at the edges of scans</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_scan_flag.html#timestream.Timestream.remove_scan_flag" title="timestream.Timestream.remove_scan_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_scan_flag</span></code></a>()</p></td>
+<td><p>Remove data segments that are not identified as part of a scan</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.remove_short_scans.html#timestream.Timestream.remove_short_scans" title="timestream.Timestream.remove_short_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_short_scans</span></code></a>([thresh])</p></td>
+<td><p>Remove scans with fewer than a specified number of samples</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.remove_tel_flag.html#timestream.Timestream.remove_tel_flag" title="timestream.Timestream.remove_tel_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_tel_flag</span></code></a>([flags])</p></td>
+<td><p>Remove samples with specified values of <code class="docutils literal notranslate"><span class="pre">Timestream.flag</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.renumber_scans.html#timestream.Timestream.renumber_scans" title="timestream.Timestream.renumber_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">renumber_scans</span></code></a>()</p></td>
+<td><p>Reset the indexing of the scans so that they run continuously from 1 to n</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.reset.html#timestream.Timestream.reset" title="timestream.Timestream.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Reset the timestream to undo the effects of any analysis methods applied.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.restrict_detectors.html#timestream.Timestream.restrict_detectors" title="timestream.Timestream.restrict_detectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restrict_detectors</span></code></a>(new_c1c2[, det_coord_mode])</p></td>
+<td><p>Limit dataset to a subset of the current detectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.write.html#timestream.Timestream.write" title="timestream.Timestream.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(filepath[, store_copy, compress, ...])</p></td>
+<td><p>Save a timestream as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="timestream.Timestream.write_1d.html#timestream.Timestream.write_1d" title="timestream.Timestream.write_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_1d</span></code></a>(filepath[, compress, overwrite])</p></td>
+<td><p>Save generated 1d binned data as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.Timestream.write_map.html#timestream.Timestream.write_map" title="timestream.Timestream.write_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_map</span></code></a>(filepath[, compress, overwrite])</p></td>
+<td><p>Save generated maps as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="timestream.Timestream.get_xf.html" class="btn btn-neutral float-right" title="timestream.Timestream.get_xf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="raw.get_data.html" class="btn btn-neutral float-left" title="raw.get_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, TIME Collaboration.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

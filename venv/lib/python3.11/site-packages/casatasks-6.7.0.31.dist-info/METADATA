@@ -1,0 +1,31 @@
+Metadata-Version: 2.2
+Name: casatasks
+Version: 6.7.0.31
+Summary: the CASA tasks
+Home-page: https://open-bitbucket.nrao.edu/projects/CASA/repos/casatools/browse
+Download-URL: https://casa.nrao.edu/download/
+Author: CASA development team
+Author-email: casa-feedback@nrao.edu
+Maintainer: Darrell Schiebel
+Maintainer-email: drs@nrao.edu
+License: GNU Library or Lesser General Public License (LGPL)
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: casatools==6.7.0.31
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: certifi
+Requires-Dist: pyerfa
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: download-url
+Dynamic: home-page
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary
+
+The CASAtasks are a collection of (mostly) stateless functions for
+the analysis of radio astronomy observations.

@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Level 0 Data API &mdash; timesoft 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/small_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="raw.get_data" href="auto_api/raw.get_data.html" />
+    <link rel="prev" title="Data Level 3 - Working with the Power Spectra" href="powspec.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> timesoft
+          
+
+          
+            
+            <img src="_static/time_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing <code class="docutils literal notranslate"><span class="pre">timesoft</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="contrib_rules.html">Contributing to the TIMESOFT Code and Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contrib_rules.html#some-guiding-principles">Some Guiding Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contrib_rules.html#doc-string-formatting">Doc String Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contrib_rules.html#basics-of-sphinx-documentation">Basics of Sphinx Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib_rules.html#jupyter-ipython-notebooks-with-sphinx">Jupyter/IPython Notebooks with Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib_rules.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Structures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_structs.html">Data Structures Used by the TIME Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_0.html">Level 0: Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_0.html#contents-of-the-netcdf-files">Contents of the netCDF Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#header-variables">Header Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#housekeeping-variables">Housekeeping Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#detector-variables">Detector Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#telescope-telemetry-variables">Telescope Telemetry Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#k-mirror-telemetry-variables">K-Mirror Telemetry Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_1.html">Level 1: Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#contents-of-the-timestream-files">Contents of the Timestream Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#telescope-flag-values">Telescope Flag Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_2.html">Level 2: Maps and Linemaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#contents-of-the-map-and-linemap-files">Contents of the Map and LineMap Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#the-extras-attribute">The ‘Extras’ Attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_3.html">Level 3: Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="raw.html">Level 0: Working with the Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#direct-interface-with-netcdf-data">Direct Interface with netCDF Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#generating-a-timestream">Generating A Timestream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#documentation-for-the-raw-module">Documentation for the <code class="docutils literal notranslate"><span class="pre">raw</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timestream.html">Level 1: Working with Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#the-timestream-class">The Timestream Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#manipulating-timestream-data">Manipulating Timestream Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-accessing-specific-detectors">Methods for Accessing Specific Detectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-tidying-up-scans-and-headers">Methods for Tidying Up Scans and Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-analyzing-timestreams">Methods for Analyzing Timestreams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-producing-level-2-data-products">Methods for Producing Level 2 Data Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-saving-data-products">Methods for Saving Data Products</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html">Loading Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Saving-and-Loading-Processed-Timestream-Data">Saving and Loading Processed Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Interacting-with-the-Timestream-Data">Interacting with the Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Processing-the-Data">Processing the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Coordinate-Systems">Coordinate Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Generating-Maps">Generating Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Generating-Line-Maps">Generating Line Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Extending-the-Timestream-Class">Extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maps.html">Data Level 2 - Working with Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powspec.html">Data Level 3 - Working with the Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Level 0 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auto_api/raw.get_data.html">raw.get_data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#level-1-data-api">Level 1 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#timesoft-timestream">timesoft.Timestream</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="auto_api/timestream.Timestream.html">timestream.Timestream</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-detectors">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.restrict_detectors.html">timestream.Timestream.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tidying-scan-information">Tidying Scan Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.header_entry.html">timestream.Timestream.header_entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analyzing-timestreams">Analyzing Timestreams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det_mask.html">timestream.Timestream.filter_scan_det_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#producing-maps-and-1d-binned-data">Producing Maps and 1D Binned Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#saving-data">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#level-2-data-api">Level 2 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#timesoft-map-and-timesoft-linemap">timesoft.Map and timesoft.LineMap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="auto_api/maps.Map.html">maps.Map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.write.html">maps.Map.write</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.restrict_detectors.html">maps.Map.restrict_detectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.get_xf.html">maps.LineMap.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.get_cr.html">maps.LineMap.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.restrict_detectors.html">maps.LineMap.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-maps">Visualizing Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.plot.html">maps.LineMap.plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.write.html">maps.Map.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.write.html">maps.LineMap.write</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">timesoft</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Level 0 Data API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="level-0-data-api">
+<h1>Level 0 Data API<a class="headerlink" href="#level-0-data-api" title="Permalink to this headline">¶</a></h1>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/raw.get_data.html#raw.get_data" title="raw.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data</span></code></a></p></td>
+<td><p>Load and pre-process raw data form netCDF files</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="level-1-data-api">
+<h1>Level 1 Data API<a class="headerlink" href="#level-1-data-api" title="Permalink to this headline">¶</a></h1>
+<section id="timesoft-timestream">
+<h2>timesoft.Timestream<a class="headerlink" href="#timesoft-timestream" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="timestream.html#timestream.Timestream" title="timestream.Timestream"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream</span></code></a></p></td>
+<td><p>Class to hold timestream data and perform data reduction</p></td>
+</tr>
+</tbody>
+</table>
+<section id="accessing-detectors">
+<h3>Accessing Detectors<a class="headerlink" href="#accessing-detectors" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.get_xf.html#timestream.Timestream.get_xf" title="timestream.Timestream.get_xf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.get_xf</span></code></a></p></td>
+<td><p>Determine the index corresponding to the detecor with xf indices (x,f)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.get_cr.html#timestream.Timestream.get_cr" title="timestream.Timestream.get_cr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.get_cr</span></code></a></p></td>
+<td><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">class.data</span></code> array corresponding to the detecor with muxcr indices (c,r)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.restrict_detectors.html#timestream.Timestream.restrict_detectors" title="timestream.Timestream.restrict_detectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.restrict_detectors</span></code></a></p></td>
+<td><p>Limit dataset to a subset of the current detectors</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tidying-scan-information">
+<h3>Tidying Scan Information<a class="headerlink" href="#tidying-scan-information" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.header_entry.html#timestream.Timestream.header_entry" title="timestream.Timestream.header_entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.header_entry</span></code></a></p></td>
+<td><p>Change the value of an item in the header</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.flag_scans.html#timestream.Timestream.flag_scans" title="timestream.Timestream.flag_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.flag_scans</span></code></a></p></td>
+<td><p>Identify individual scans of the telescope across the map region</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.renumber_scans.html#timestream.Timestream.renumber_scans" title="timestream.Timestream.renumber_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.renumber_scans</span></code></a></p></td>
+<td><p>Reset the indexing of the scans so that they run continuously from 1 to n</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_flag.html#timestream.Timestream.remove_scan_flag" title="timestream.Timestream.remove_scan_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_scan_flag</span></code></a></p></td>
+<td><p>Remove data segments that are not identified as part of a scan</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_direction.html#timestream.Timestream.remove_scan_direction" title="timestream.Timestream.remove_scan_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_scan_direction</span></code></a></p></td>
+<td><p>Remove all scans not along a specified scan direction</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_short_scans.html#timestream.Timestream.remove_short_scans" title="timestream.Timestream.remove_short_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_short_scans</span></code></a></p></td>
+<td><p>Remove scans with fewer than a specified number of samples</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_end_scans.html#timestream.Timestream.remove_end_scans" title="timestream.Timestream.remove_end_scans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_end_scans</span></code></a></p></td>
+<td><p>Remove a speciied number of scans from the start or end of an observation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_edge.html#timestream.Timestream.remove_scan_edge" title="timestream.Timestream.remove_scan_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_scan_edge</span></code></a></p></td>
+<td><p>Remove samples at the edges of scans</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.remove_tel_flag.html#timestream.Timestream.remove_tel_flag" title="timestream.Timestream.remove_tel_flag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.remove_tel_flag</span></code></a></p></td>
+<td><p>Remove samples with specified values of <code class="docutils literal notranslate"><span class="pre">Timestream.flag</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream._remove_samples.html#timestream.Timestream._remove_samples" title="timestream.Timestream._remove_samples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream._remove_samples</span></code></a></p></td>
+<td><p>Remove specified samples from a timestream</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="analyzing-timestreams">
+<h3>Analyzing Timestreams<a class="headerlink" href="#analyzing-timestreams" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.convert_coordinates.html#timestream.Timestream.convert_coordinates" title="timestream.Timestream.convert_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.convert_coordinates</span></code></a></p></td>
+<td><p>Transform data between coordinate frames</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html#timestream.Timestream.filter_scan_det" title="timestream.Timestream.filter_scan_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.filter_scan_det</span></code></a></p></td>
+<td><p>Polynomial filtering of detector counts</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det_mask.html#timestream.Timestream.filter_scan_det_mask" title="timestream.Timestream.filter_scan_det_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.filter_scan_det_mask</span></code></a></p></td>
+<td><p>Polynomial filtering of detector counts with source masking</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan.html#timestream.Timestream.filter_scan" title="timestream.Timestream.filter_scan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.filter_scan</span></code></a></p></td>
+<td><p>Polynomial filtering of all detectors</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="producing-maps-and-1d-binned-data">
+<h3>Producing Maps and 1D Binned Data<a class="headerlink" href="#producing-maps-and-1d-binned-data" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.make_1d.html#timestream.Timestream.make_1d" title="timestream.Timestream.make_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.make_1d</span></code></a></p></td>
+<td><p>Bin samples along a specified axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.plot_1d.html#timestream.Timestream.plot_1d" title="timestream.Timestream.plot_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.plot_1d</span></code></a></p></td>
+<td><p>Make plots of detectors 1d binned data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.make_map.html#timestream.Timestream.make_map" title="timestream.Timestream.make_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.make_map</span></code></a></p></td>
+<td><p>Make maps of all detectors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.plot_map.html#timestream.Timestream.plot_map" title="timestream.Timestream.plot_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.plot_map</span></code></a></p></td>
+<td><p>View map of single detector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.detector_grid.html#timestream.Timestream.detector_grid" title="timestream.Timestream.detector_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.detector_grid</span></code></a></p></td>
+<td><p>Creates a plot showing all detectors in a grid</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.make_map_det.html#timestream.Timestream.make_map_det" title="timestream.Timestream.make_map_det"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.make_map_det</span></code></a></p></td>
+<td><p>Quicklook map of a single detector</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="saving-data">
+<h3>Saving Data<a class="headerlink" href="#saving-data" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.write.html#timestream.Timestream.write" title="timestream.Timestream.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.write</span></code></a></p></td>
+<td><p>Save a timestream as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.write_map.html#timestream.Timestream.write_map" title="timestream.Timestream.write_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.write_map</span></code></a></p></td>
+<td><p>Save generated maps as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.write_1d.html#timestream.Timestream.write_1d" title="timestream.Timestream.write_1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.write_1d</span></code></a></p></td>
+<td><p>Save generated 1d binned data as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/timestream.Timestream.reset.html#timestream.Timestream.reset" title="timestream.Timestream.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timestream.reset</span></code></a></p></td>
+<td><p>Reset the timestream to undo the effects of any analysis methods applied.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="level-2-data-api">
+<h1>Level 2 Data API<a class="headerlink" href="#level-2-data-api" title="Permalink to this headline">¶</a></h1>
+<section id="timesoft-map-and-timesoft-linemap">
+<h2>timesoft.Map and timesoft.LineMap<a class="headerlink" href="#timesoft-map-and-timesoft-linemap" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.Map.html#maps.Map" title="maps.Map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map</span></code></a></p></td>
+<td><p><p class="rubric">Methods</p>
+</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id1">
+<h3>Accessing Detectors<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.Map.get_xf.html#maps.Map.get_xf" title="maps.Map.get_xf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.get_xf</span></code></a></p></td>
+<td><p>Determine the index corresponding to the detecor with xf indices (x,f)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/maps.Map.get_cr.html#maps.Map.get_cr" title="maps.Map.get_cr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.get_cr</span></code></a></p></td>
+<td><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">class.data</span></code> array corresponding to the detecor with muxcr indices (c,r)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.Map.restrict_detectors.html#maps.Map.restrict_detectors" title="maps.Map.restrict_detectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.restrict_detectors</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.LineMap.get_xf.html#maps.LineMap.get_xf" title="maps.LineMap.get_xf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineMap.get_xf</span></code></a></p></td>
+<td><p>Determine the index corresponding to the detecor with xf indices (x,f)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/maps.LineMap.get_cr.html#maps.LineMap.get_cr" title="maps.LineMap.get_cr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineMap.get_cr</span></code></a></p></td>
+<td><p>Determine the index in the <code class="docutils literal notranslate"><span class="pre">class.data</span></code> array corresponding to the detecor with muxcr indices (c,r)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.LineMap.restrict_detectors.html#maps.LineMap.restrict_detectors" title="maps.LineMap.restrict_detectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineMap.restrict_detectors</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="visualizing-maps">
+<h3>Visualizing Maps<a class="headerlink" href="#visualizing-maps" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.Map.plot.html#maps.Map.plot" title="maps.Map.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.plot</span></code></a></p></td>
+<td><p>View map of single detector</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="auto_api/maps.Map.detector_grid.html#maps.Map.detector_grid" title="maps.Map.detector_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.detector_grid</span></code></a></p></td>
+<td><p>Creates a plot showing all detectors in a grid</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.LineMap.plot.html#maps.LineMap.plot" title="maps.LineMap.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineMap.plot</span></code></a></p></td>
+<td><p>Make plots of detectors 1d binned data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3>Saving Data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.Map.write.html#maps.Map.write" title="maps.Map.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Map.write</span></code></a></p></td>
+<td><p>Save maps as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="auto_api/maps.LineMap.write.html#maps.LineMap.write" title="maps.LineMap.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineMap.write</span></code></a></p></td>
+<td><p>Save linemaps as a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="auto_api/raw.get_data.html" class="btn btn-neutral float-right" title="raw.get_data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="powspec.html" class="btn btn-neutral float-left" title="Data Level 3 - Working with the Power Spectra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, TIME Collaboration.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

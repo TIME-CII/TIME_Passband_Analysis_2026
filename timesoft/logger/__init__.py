@@ -1,0 +1,1 @@
+from timesoft.logger.time_logger import time_logger

@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Contributing to the TIMESOFT Code and Documentation &mdash; timesoft 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/small_logo.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Structures Used by the TIME Collaboration" href="data_structs.html" />
+    <link rel="prev" title="Installing timesoft" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> timesoft
+          
+
+          
+            
+            <img src="_static/time_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing <code class="docutils literal notranslate"><span class="pre">timesoft</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to the TIMESOFT Code and Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#some-guiding-principles">Some Guiding Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#doc-string-formatting">Doc String Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basics-of-sphinx-documentation">Basics of Sphinx Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-ipython-notebooks-with-sphinx">Jupyter/IPython Notebooks with Sphinx</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Structures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_structs.html">Data Structures Used by the TIME Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_0.html">Level 0: Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_0.html#contents-of-the-netcdf-files">Contents of the netCDF Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#header-variables">Header Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#housekeeping-variables">Housekeeping Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#detector-variables">Detector Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#telescope-telemetry-variables">Telescope Telemetry Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structs_0.html#k-mirror-telemetry-variables">K-Mirror Telemetry Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_1.html">Level 1: Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#contents-of-the-timestream-files">Contents of the Timestream Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_1.html#telescope-flag-values">Telescope Flag Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_2.html">Level 2: Maps and Linemaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#contents-of-the-map-and-linemap-files">Contents of the Map and LineMap Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#headers">Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structs_2.html#the-extras-attribute">The ‘Extras’ Attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_structs_3.html">Level 3: Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="raw.html">Level 0: Working with the Raw Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#direct-interface-with-netcdf-data">Direct Interface with netCDF Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#generating-a-timestream">Generating A Timestream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw.html#documentation-for-the-raw-module">Documentation for the <code class="docutils literal notranslate"><span class="pre">raw</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timestream.html">Level 1: Working with Timestream Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#the-timestream-class">The Timestream Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#manipulating-timestream-data">Manipulating Timestream Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-accessing-specific-detectors">Methods for Accessing Specific Detectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-tidying-up-scans-and-headers">Methods for Tidying Up Scans and Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-analyzing-timestreams">Methods for Analyzing Timestreams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-producing-level-2-data-products">Methods for Producing Level 2 Data Products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timestream.html#methods-for-saving-data-products">Methods for Saving Data Products</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timestream.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html">Loading Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Saving-and-Loading-Processed-Timestream-Data">Saving and Loading Processed Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Interacting-with-the-Timestream-Data">Interacting with the Timestream Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Processing-the-Data">Processing the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Coordinate-Systems">Coordinate Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Generating-Maps">Generating Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Generating-Line-Maps">Generating Line Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/timesoft_demo.html#Extending-the-Timestream-Class">Extending the <code class="docutils literal notranslate"><span class="pre">Timestream</span></code> Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maps.html">Data Level 2 - Working with Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powspec.html">Data Level 3 - Working with the Power Spectra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Level 0 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auto_api/raw.get_data.html">raw.get_data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#level-1-data-api">Level 1 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#timesoft-timestream">timesoft.Timestream</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="auto_api/timestream.Timestream.html">timestream.Timestream</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#accessing-detectors">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_xf.html">timestream.Timestream.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.get_cr.html">timestream.Timestream.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.restrict_detectors.html">timestream.Timestream.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#tidying-scan-information">Tidying Scan Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.header_entry.html">timestream.Timestream.header_entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.flag_scans.html">timestream.Timestream.flag_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.renumber_scans.html">timestream.Timestream.renumber_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_flag.html">timestream.Timestream.remove_scan_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_direction.html">timestream.Timestream.remove_scan_direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_short_scans.html">timestream.Timestream.remove_short_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_end_scans.html">timestream.Timestream.remove_end_scans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_scan_edge.html">timestream.Timestream.remove_scan_edge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.remove_tel_flag.html">timestream.Timestream.remove_tel_flag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream._remove_samples.html">timestream.Timestream._remove_samples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#analyzing-timestreams">Analyzing Timestreams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.convert_coordinates.html">timestream.Timestream.convert_coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det.html">timestream.Timestream.filter_scan_det</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan_det_mask.html">timestream.Timestream.filter_scan_det_mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.filter_scan.html">timestream.Timestream.filter_scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#producing-maps-and-1d-binned-data">Producing Maps and 1D Binned Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_1d.html">timestream.Timestream.make_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_1d.html">timestream.Timestream.plot_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map.html">timestream.Timestream.make_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.plot_map.html">timestream.Timestream.plot_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.detector_grid.html">timestream.Timestream.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.make_map_det.html">timestream.Timestream.make_map_det</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#saving-data">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write.html">timestream.Timestream.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_map.html">timestream.Timestream.write_map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.write_1d.html">timestream.Timestream.write_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/timestream.Timestream.reset.html">timestream.Timestream.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#level-2-data-api">Level 2 Data API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#timesoft-map-and-timesoft-linemap">timesoft.Map and timesoft.LineMap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="auto_api/maps.Map.html">maps.Map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.write.html">maps.Map.write</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id1">Accessing Detectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_xf.html">maps.Map.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.get_cr.html">maps.Map.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.restrict_detectors.html">maps.Map.restrict_detectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.get_xf.html">maps.LineMap.get_xf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.get_cr.html">maps.LineMap.get_cr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.restrict_detectors.html">maps.LineMap.restrict_detectors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#visualizing-maps">Visualizing Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.plot.html">maps.Map.plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.detector_grid.html">maps.Map.detector_grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.plot.html">maps.LineMap.plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id2">Saving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.Map.write.html">maps.Map.write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_api/maps.LineMap.write.html">maps.LineMap.write</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">timesoft</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Contributing to the TIMESOFT Code and Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/contrib_rules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="contributing-to-the-timesoft-code-and-documentation">
+<h1>Contributing to the TIMESOFT Code and Documentation<a class="headerlink" href="#contributing-to-the-timesoft-code-and-documentation" title="Permalink to this headline">¶</a></h1>
+<section id="some-guiding-principles">
+<h2>Some Guiding Principles<a class="headerlink" href="#some-guiding-principles" title="Permalink to this headline">¶</a></h2>
+<p>When working on code for <code class="docutils literal notranslate"><span class="pre">timesoft</span></code> please keep in mind the
+following guidelines:</p>
+<ol class="arabic simple">
+<li><p><strong>Contributions encouraged:</strong>
+the <code class="docutils literal notranslate"><span class="pre">timesoft</span></code> package is a collaborative development of the
+TIME Collaboration and all members are welcomed and encouraged
+to contribute in whatever ways they can.</p></li>
+<li><p><strong>What to include:</strong>
+software included in <code class="docutils literal notranslate"><span class="pre">timesoft</span></code> should be for general purpose
+processing of the data. If your code exists only to analyze a
+very specific piece of data, it should be kept in the <code class="docutils literal notranslate"><span class="pre">timesandbox</span></code>
+section of the github repo instead of added to the <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>
+package. For example, code with general utilities for cleaning
+up timestreams (e.g. flagging bad data, correcting atmospheric
+varriations, etc.) belongs in <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>. On the other hand,
+code to load data for a specific observation of Mars, toss out
+the first 10 minutes of data because of some defect noticed by
+the observer, and then perform some specific analyses on the
+timestream belongs in <code class="docutils literal notranslate"><span class="pre">timesandbox</span></code>. In general, if you don’t know
+where your code goes, ask at the next telecon and we can figure
+it out collectively.</p></li>
+<li><p><strong>When to include it:</strong>
+make sure a piece of software is fully developed and adds the
+desired new functionality before adding it to <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>. For
+experimental code or work in progress, use your personal
+<code class="docutils literal notranslate"><span class="pre">timesandbox</span></code> directory (or a collective working directory) for
+developing or experimenting with things. You may also want to
+perform work in a development branch, and make a <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a>
+once work is ready to be reviewed. Once something is put in
+<code class="docutils literal notranslate"><span class="pre">timesandbox</span></code> it should be the standard procedure that will be
+used by the collaboration to accomplish a given analysis task.</p></li>
+<li><p><strong>Read the documentation before making changes:</strong>
+These documentation pages contain lots of information, including
+some guidance on how to use and edit various pieces of code that
+might not be evident from the code itself. Please review the
+documentation for any code you are thinking of modifying prior
+to making changes.</p></li>
+<li><p><strong>Document your code:</strong>
+Please thoroughly document your code, as it will be used by
+others for their analysis. In particular, include properly
+formatted doc strings for major pieces of code
+that you add to <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>. You are also invited to add to our
+documentation web pages by writing more extensive tutorials or
+explanations of major pieces of code you contribute. You can
+find a primer on doc strings and how to format them
+<a class="reference internal" href="#docstrings"><span class="std std-ref">here</span></a>. You can find a primer on how to
+write pages of the documentation <a class="reference internal" href="#sphinxintro"><span class="std std-ref">here</span></a>.</p></li>
+</ol>
+</section>
+<section id="doc-string-formatting">
+<span id="docstrings"></span><h2>Doc String Formatting<a class="headerlink" href="#doc-string-formatting" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx works by parsing the doc strings in Python code and
+formatting them in a uniform way for easily readable documentation.
+In order for this to work specific formatting conventions must
+be followed. Our Sphinx setup supports a few format options, but
+if you are not already familiar with a particular convention I
+recommend using the <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code>
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">style</a>.</p>
+<p>A doc string is a markdown string placed at the beginning of a function,
+class, or module, demarcated by triple double quotes. At its most basic, it
+should be a short description of the behavior of the piece of code. However,
+well written doc strings can completely document a piece of code, and
+documentation that lives alongside the code is more likely to stay up to date.
+A basic <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code> doc string for a function is structured as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;One line description</span>
+
+<span class="sd">    A few sentences providing a longer description of the code&#39;s</span>
+<span class="sd">    functionality.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    par1 : type</span>
+<span class="sd">        description of first parameter</span>
+<span class="sd">    par2 : type</span>
+<span class="sd">        description of second parameter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    return1 : type</span>
+<span class="sd">        description of the first item returned</span>
+<span class="sd">    return2 : type</span>
+<span class="sd">        description of the second item returned</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    (Optional) Notes about the code</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    (Optional) Examples of code usage</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>For a concrete example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">sayhi</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function to add x and y</span>
+
+<span class="sd">    This function takes inputs x and y and returns the sum x+y.</span>
+<span class="sd">    Optionally it also prints a friendly message.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : float</span>
+<span class="sd">        The first number to be summed</span>
+<span class="sd">    y : float</span>
+<span class="sd">        The second number to be summed</span>
+<span class="sd">    sayhi : bool, optional</span>
+<span class="sd">        If set to True, the function will also print a friendly message.</span>
+<span class="sd">        The default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    z : float</span>
+<span class="sd">        The sum of `x` and `y`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Standard usage of the function:</span>
+<span class="sd">    &gt;&gt;&gt; z = add(1.0,2.0)</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    3.0</span>
+
+<span class="sd">    Usage if you need some encouragement:</span>
+<span class="sd">    &gt;&gt;&gt; z = add(1.0,2.0,sayhi=True)</span>
+<span class="sd">    Hi friend. You&#39;re doing a great job!</span>
+<span class="sd">    &gt;&gt;&gt; print(z)</span>
+<span class="sd">    3.0</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+    <span class="k">if</span> <span class="n">sayhi</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi friend. You&#39;re doing a great job!&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stick to section headings supported by <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code> in
+your doc strings, as Sphinx may ignore things that
+are not recognized. Standard sections include
+Parameters, Returns, Raises, Notes, Examples, See Also,
+Methods (for classes), Attributes (for classes),
+and Routine Listing (for modules). See the <code class="docutils literal notranslate"><span class="pre">numpydoc</span></code>
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">website</a>
+for a full listing.</p>
+</div>
+</section>
+<section id="basics-of-sphinx-documentation">
+<span id="sphinxintro"></span><h2>Basics of Sphinx Documentation<a class="headerlink" href="#basics-of-sphinx-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx is a tool for documenting Python code that combines
+markdown tools with an interpreter that can parse the doc
+strings of code and automatically format them for easy reading.
+It is the tool used to generate the documentation for a wide
+range of familiar Python packages, including <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and
+<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.
+The <a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx website</a>
+provides a good overview and tutorial for setting up documentation.
+The specific markdown language used by Sphinx is <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>. There are plenty of
+guides available for achieving specific formatting with reStructuredText.</p>
+<p>This section provides a short overview of the minimum steps to
+create a new page documenting a hypothetical <code class="docutils literal notranslate"><span class="pre">funmath</span></code> module
+you might have just added to <code class="docutils literal notranslate"><span class="pre">timesoft</span></code>.</p>
+<p><strong>Step 1: Create a module.rst file:</strong> The markdown files for our
+docs are kept in the <code class="docutils literal notranslate"><span class="pre">TIME-analysis</span></code> repo in <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source</span></code>.
+<code class="docutils literal notranslate"><span class="pre">index.rst</span></code> contains defines the main page of our docs, and other
+<code class="docutils literal notranslate"><span class="pre">.rst</span></code> files create subsections of the documentation.</p>
+<p>Create a new file <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source/funmath.rst</span></code>. Open this
+file and add the following markdown:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh">FUNMATH: A Happy Module For More Fun Doing Math</span>
+<span class="gh">===============================================</span>
+
+Funmath performs regular mathematical calculations
+such as addition and subtraction, but prints nice
+comments to the console as it works. This page
+demonstrates how to use the varous functions included
+in the ``timesoft.funmath`` module.
+</pre></div>
+</div>
+<p>Headings are indicated by underlining a section of text with
+equal signs. Subheadings can be acomplished using dashes instead.</p>
+<p><strong>Step 2: Add your file to the index:</strong> New markdown files must
+be added to the index in order to make them discoverable via the
+navigation panes of our docs. Open <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source/index.rst</span></code>
+and find the section at the end with <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> followed by a list of
+the docs pages, and add <code class="docutils literal notranslate"><span class="pre">funmath</span></code> to the list in the location
+where it best fits. You’ll end up with something like this:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>.. toctree::
+    contrib_rules
+    data_structs
+    raw
+    funmath
+    ...
+</pre></div>
+</div>
+<p><strong>Step 3: Generate documentation for the module:</strong> Next,
+go to <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source/api.rst</span></code>. This page
+contains listings of the available classes, methods,
+and functions in each module. Determine where your
+module belongs in the list, and add the
+following markdown to the end of the document:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">timesoft.funmath</span>
+<span class="gu">----------------</span>
+.. currentmodule:: funmath
+
+.. autosummary::
+    :toctree: api
+
+    funaddition
+    funsubtraction
+    ...
+</pre></div>
+</div>
+<p>Where the list under <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">autosummary::</span></code> contains all
+of the important classes, methods, functions, and other
+objects in your module (in this example, funaddition,
+funsubtraction, and so on).</p>
+<p>The autosummary imports the funmath module then
+collects and formats all the doc strings.</p>
+<p><strong>Step 4: Remake the documentation pages:</strong> finally, navigate
+to <code class="docutils literal notranslate"><span class="pre">timesoft/docs</span></code> in the command line and run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>.
+This will generate the HTML for all the webpages. The HTML
+files are stored in <code class="docutils literal notranslate"><span class="pre">timesoft/docs/build/html</span></code>. Scroll up
+through the messages output in the console and make sure no
+major errors occurred (they will probably be highlighted in
+red text). Often, when new items are added to the API the
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> will be unable to find them the first time it
+is run. Try running it a second time and many of the errors
+may be resolved. Then you can push your updated documentation
+to the github repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once we have a plan for how/where/if to host these docs, we’ll
+want to add instructions for updating the code there.</p>
+</div>
+<section id="jupyter-ipython-notebooks-with-sphinx">
+<h3>Jupyter/IPython Notebooks with Sphinx<a class="headerlink" href="#jupyter-ipython-notebooks-with-sphinx" title="Permalink to this headline">¶</a></h3>
+<p>Sphinx supports directly importing Jupyter notebooks into
+your documentation. If you have a notebook demonstrating
+how to use a piece of code and providing some commentary
+via the notebook’s markdown cells, you can include a copy
+in the <code class="docutils literal notranslate"><span class="pre">timesoft</span></code> documentation.</p>
+<p>To do this, first make sure that all cells in your notebook
+have been run and show the desired output. Then place a
+copy in the <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source/notebooks</span></code> directory.
+From there all you have to do is add it to the toctree on
+the index.rst page. Open <code class="docutils literal notranslate"><span class="pre">timesoft/docs/source/index.rst</span></code>
+and add <code class="docutils literal notranslate"><span class="pre">notebooks/[filename]</span></code> at the location where
+tutorial document belongs.</p>
+<p>More details on this feature are available
+<a class="reference external" href="https://docs.readthedocs.io/en/stable/guides/jupyter.html">here</a>.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p><strong>Relative Imports:</strong> sphinx seems to have trouble with relative
+imports. If you’re writing code form moduleX and want to import
+functionA from moduleY, the relative import you would use is
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">..moduleY</span> <span class="pre">import</span> <span class="pre">functionA</span></code>. This may cause sphinx’s
+autodoc module to fail when loading the code. Instead try using
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">timesoft.moduleY</span> <span class="pre">import</span> <span class="pre">functionA</span></code>. This seems to be a
+workable alternative.</p>
+<p><strong>conda environments:</strong>
+running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs`</span></code> to run <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> is
+<a class="reference external" href="https://stackoverflow.com/a/4249730">problematic</a> inside a <code class="docutils literal notranslate"><span class="pre">`conda`</span></code>
+environment, due to how the <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> is generated. It calls
+<code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>, which may be a system install, rather than the one installed
+in the <code class="docutils literal notranslate"><span class="pre">conda</span></code> env. To explicitly specify the right <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> executable,
+do</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make html SPHINXBUILD=&#39;python &lt;path_to_sphinx&gt;/sphinx-build&#39;</span>
+</pre></div>
+</div>
+<p>After the <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> dependencies are installed in the environment, you can find
+this executable in a place like <code class="docutils literal notranslate"><span class="pre">~/.conda/envs/&lt;env-name&gt;/bin/sphinx-build</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="data_structs.html" class="btn btn-neutral float-right" title="Data Structures Used by the TIME Collaboration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installing timesoft" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, TIME Collaboration.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

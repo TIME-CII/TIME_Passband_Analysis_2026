@@ -1,0 +1,10 @@
+Parameters for this run
+bias_start= 2000
+bias_step= -10
+bias_count= 132
+zap_bias= 2000
+zap_time= 1.0
+settle_time= 1.0
+bias_pause= 0.1
+bias_final= 2000
+data_mode= 10

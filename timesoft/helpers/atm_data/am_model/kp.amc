@@ -1,0 +1,148 @@
+# file generic_mid.amc - Generic midlatitude atmosphere
+#
+# The total O3 column is fixed at 258.6 DU.  The H2O column is 7.760 mm when
+# the command-line argument h2o_scale is set to 1.0.
+?
+? usage: am generic_mid.amc  fmin[GHz]  fmax[GHz]  zenith_angle[deg]  h2o_scale 
+?
+f %1 GHz  %2 GHz  2.0 MHz
+output f GHz  tau  Tb K
+za %3 deg
+tol 0
+
+Nscale h2o %4
+
+T0 2.7 K
+
+layer
+Pbase 3 mbar
+Tbase 252 K
+column dry_air hydrostatic
+column o3 hydrostatic 4.0e-6
+
+layer
+Pbase 6 mbar
+Tbase 240.5 K
+column dry_air hydrostatic
+column o3 hydrostatic 6.156e-6
+
+layer
+Pbase 9 mbar
+Tbase 235 K
+column dry_air hydrostatic
+column o3 hydrostatic 8.844e-6
+
+layer
+Pbase 12 mbar
+Tbase 232 K
+column dry_air hydrostatic
+column o3 hydrostatic 9.225e-6
+
+layer
+Pbase 15 mbar
+Tbase 228 K
+column dry_air hydrostatic
+column o3 hydrostatic 8.890e-6
+
+layer
+Pbase 20 mbar
+Tbase 225 K
+column dry_air hydrostatic
+column o3 hydrostatic 7.808e-6
+
+layer
+Pbase 25 mbar
+Tbase 221.5 K
+column dry_air hydrostatic
+column o3 hydrostatic 6.187e-6
+
+layer
+Pbase 30 mbar
+Tbase 219 K
+column dry_air hydrostatic
+column o3 hydrostatic 4.930e-6
+
+layer
+Pbase 40 mbar
+Tbase 215 K
+column dry_air hydrostatic
+column o3 hydrostatic 3.480e-6
+
+layer
+Pbase 50 mbar
+Tbase 210.5 K
+column dry_air hydrostatic
+column o3 hydrostatic 2.077e-6
+
+layer
+Pbase 60 mbar
+Tbase 207 K
+column dry_air hydrostatic
+column o3 hydrostatic 1.269e-6
+
+layer
+Pbase 80 mbar
+Tbase 201 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.649e-6
+
+layer
+Pbase 100 mbar
+Tbase 200 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.248e-6
+
+layer
+Pbase 150 mbar
+Tbase 208 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.101e-6
+
+layer
+Pbase 200 mbar
+Tbase 219 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.053e-6
+
+layer
+Pbase 314 mbar
+Tbase 230.5 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.042e-6
+column h2o hydrostatic 1.38e-4
+
+layer
+Pbase 407 mbar
+Tbase 243 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.045e-6
+column h2o hydrostatic 3.35e-4
+
+layer
+Pbase 516 mbar
+Tbase 258 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.047e-6
+column h2o hydrostatic 8.66e-4 
+
+layer
+Pbase 618 mbar
+Tbase  265 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.048e-6
+column h2o hydrostatic 1.99e-3
+
+layer
+Pbase 707 mbar
+Tbase  272 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.048e-6
+column h2o hydrostatic 3.3e-3
+
+layer
+Pbase 803 mbar
+Tbase  279 K
+column dry_air hydrostatic
+column o3 hydrostatic 0.048e-6
+column h2o hydrostatic 6.1e-3
+

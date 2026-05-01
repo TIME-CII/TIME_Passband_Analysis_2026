@@ -1,0 +1,6 @@
+#!/Users/xenexjoshi/TIME-analysis-2026_deployment_dev/venv/bin/python3.11
+import sys
+from astropy.table.scripts.showtable import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())
