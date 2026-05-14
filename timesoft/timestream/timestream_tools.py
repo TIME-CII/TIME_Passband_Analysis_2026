@@ -462,11 +462,9 @@ class Timestream(_Datastruct_base):
 
             if version in ['2024.dev.1','2026.dev.0']:
                 base_path = Path(path)
-                name = base_path.name
-                run_id = name[len("mce_"):]
-            # Remove leading slash
-                hk_path = base_path.parent / f"hk_{run_id}"
-                mce_path = base_path.parent / f"mce_{run_id}"
+                run_id = base_path.name  # use name directly, don't strip 'mce_' prefix
+                hk_path = base_path.parent / f"hk_netcdf_files/hk_{run_id}"
+                mce_path = base_path.parent / f"netcdf_files/mce_{run_id}"
             else: 
                 hk_path = None 
                 mce_path = path 
