@@ -203,23 +203,24 @@ def passband_compute(MCE, obs_ids, file_paths, encoder_paths, OPD_FACTOR=2, debu
                     fig_raw.savefig('%s/x%s_f%s_step1_raw.png' % (out_path, xf[0], xf[1]))
                     plt.close(fig_raw)
 
-                # DEBUG Step 2: shifted position showing scan alignment
+                # DEBUG Step 2: all scans overlaid — signal vs mirror position
                 if debug:
-                    n_scans = len(scans_pos)
-                    fig_shift, axs_shift = plt.subplots(n_scans, 1, figsize=(12, 3 * n_scans), sharex=True)
-                    if n_scans == 1:
-                        axs_shift = [axs_shift]
-                    for i, x in enumerate(scans_pos):
+                    _cmap = plt.get_cmap('tab10')
+                    fig_shift, ax_shift = plt.subplots(figsize=(10, 4))
+                    for i, (x, y) in enumerate(zip(scans_pos, scans_data)):
                         x_shifted = x - np.max(x)
-                        axs_shift[i].plot(x_shifted, alpha=0.8, linewidth=LW, color='steelblue')
-                        axs_shift[i].axvline(0, color='black', linestyle='dashed', linewidth=LW, label='ZPD')
-                        axs_shift[i].set_ylabel('Position (mm)')
-                        axs_shift[i].set_title(f'Scan {i + 1}')
-                        axs_shift[i].legend(fontsize=8)
-                        axs_shift[i].minorticks_on()
-                        axs_shift[i].tick_params(which='both', direction='in', top=True, right=True)
-                    axs_shift[-1].set_xlabel('Sample index')
-                    fig_shift.suptitle(f'Scan alignment | x={xf[0]} f={xf[1]}')
+                        ax_shift.plot(x_shifted, y - np.nanmedian(y),
+                                      alpha=0.7, linewidth=LW, color=_cmap(i % 10),
+                                      label=f'Scan {i + 1}')
+                    ax_shift.axvline(0, color='black', linestyle='dashed', linewidth=LW, label='ZPD')
+                    ax_shift.set_xlabel('Mirror position (mm, shifted to ZPD=0)')
+                    ax_shift.set_ylabel('Signal (median subtracted)')
+                    ax_shift.set_title(f'Scan alignment | x={xf[0]} f={xf[1]}')
+                    if len(scans_pos) <= 10:
+                        ax_shift.legend(fontsize=7, loc='upper left',
+                                        ncol=min(4, len(scans_pos)))
+                    ax_shift.minorticks_on()
+                    ax_shift.tick_params(which='both', direction='in', top=True, right=True)
                     fig_shift.tight_layout()
                     fig_shift.savefig('%s/x%s_f%s_step2_alignment.png' % (out_path, xf[0], xf[1]))
                     plt.close(fig_shift)
@@ -299,6 +300,36 @@ def passband_compute(MCE, obs_ids, file_paths, encoder_paths, OPD_FACTOR=2, debu
 
                 d_raw = avg_bin_ys.copy()
 
+                # DEBUG Step 3b: interferogram before asymmetric extension + ZPD zoom
+                if debug:
+                    _zpd_hw = 10  # mm either side of ZPD in zoom panel
+                    fig_pre, axs_pre = plt.subplots(1, 2, figsize=(12, 4))
+
+                    axs_pre[0].plot(avg_bin_xs, d_raw, color='steelblue', linewidth=LW)
+                    axs_pre[0].axvline(0, color='black', linestyle='dashed', linewidth=LW, label='ZPD')
+                    axs_pre[0].set_xlabel('OPD (mm)')
+                    axs_pre[0].set_ylabel('Amplitude')
+                    axs_pre[0].set_title('Interferogram (pre-asymmetric extension)')
+                    axs_pre[0].legend(fontsize=8)
+                    axs_pre[0].minorticks_on()
+                    axs_pre[0].tick_params(which='both', direction='in', top=True, right=True)
+
+                    _zpd_mask = np.abs(avg_bin_xs) <= _zpd_hw
+                    axs_pre[1].plot(avg_bin_xs[_zpd_mask], d_raw[_zpd_mask],
+                                    color='steelblue', linewidth=LW)
+                    axs_pre[1].axvline(0, color='black', linestyle='dashed', linewidth=LW, label='ZPD')
+                    axs_pre[1].set_xlabel('OPD (mm)')
+                    axs_pre[1].set_ylabel('Amplitude')
+                    axs_pre[1].set_title(f'ZPD zoom (±{_zpd_hw} mm)')
+                    axs_pre[1].legend(fontsize=8)
+                    axs_pre[1].minorticks_on()
+                    axs_pre[1].tick_params(which='both', direction='in', top=True, right=True)
+
+                    fig_pre.suptitle(f'Interferogram & ZPD | x={xf[0]} f={xf[1]}')
+                    fig_pre.tight_layout()
+                    fig_pre.savefig('%s/x%s_f%s_step3b_igram_zpd.png' % (out_path, xf[0], xf[1]))
+                    plt.close(fig_pre)
+
                 symm_len = int(len(d_raw) // 2)
                 asymm_len = len(d_raw) - symm_len
                 final_len = log2ceil(asymm_len * 2)
@@ -317,81 +348,33 @@ def passband_compute(MCE, obs_ids, file_paths, encoder_paths, OPD_FACTOR=2, debu
                 igram_asymm_ext[-symm_len:] *= np.linspace(0, 0.5, symm_len)
                 igram_asymm_ext[:symm_len] *= np.linspace(0.5, 1, symm_len)
 
-                # DEBUG Step 4: zero-padded interferogram (full view)
+                # Step 4: apply window function — debug shows pre-window igram + window shape
+                window = np.fft.ifftshift(np.blackman(final_len))
                 if debug:
                     fig_pad, ax_pad = plt.subplots(figsize=(12, 4))
-                    ax_pad.plot(igram_asymm_ext, color='steelblue', linewidth=LW, label='Zero-padded interferogram')
-                    ax_pad.axvline(asymm_len, color='red', linestyle='dashed', linewidth=LW, label='End of data')
-                    ax_pad.axvline(final_len - symm_len, color='orange', linestyle='dashed', linewidth=LW, label='Start of symmetric part')
+                    ax_twin = ax_pad.twinx()
+                    ax_pad.plot(igram_asymm_ext, color='steelblue', linewidth=LW,
+                                label='Interferogram (asym. ext.)')
+                    ax_pad.axvline(asymm_len, color='red', linestyle='dashed', linewidth=LW,
+                                   label='End of data')
+                    ax_pad.axvline(final_len - symm_len, color='orange', linestyle='dashed',
+                                   linewidth=LW, label='Start of symmetric part')
+                    ax_twin.plot(window, color='green', alpha=0.6, linewidth=LW,
+                                 label='Blackman window')
                     ax_pad.set_xlabel('Sample index')
-                    ax_pad.set_ylabel('Amplitude')
-                    ax_pad.set_title(f'Zero-padded interferogram | x={xf[0]} f={xf[1]}')
-                    ax_pad.legend(fontsize=8)
+                    ax_pad.set_ylabel('Interferogram amplitude', color='steelblue')
+                    ax_twin.set_ylabel('Window amplitude', color='green')
+                    ax_pad.set_title(f'Asymmetric extension + window | x={xf[0]} f={xf[1]}')
+                    _lines1, _labels1 = ax_pad.get_legend_handles_labels()
+                    _lines2, _labels2 = ax_twin.get_legend_handles_labels()
+                    ax_pad.legend(_lines1 + _lines2, _labels1 + _labels2,
+                                  fontsize=8, loc='upper right')
                     ax_pad.minorticks_on()
                     ax_pad.tick_params(which='both', direction='in', top=True, right=True)
                     fig_pad.tight_layout()
-                    fig_pad.savefig('%s/x%s_f%s_step4_zeropad.png' % (out_path, xf[0], xf[1]))
+                    fig_pad.savefig('%s/x%s_f%s_step4_asym_window.png' % (out_path, xf[0], xf[1]))
                     plt.close(fig_pad)
-
-                # DEBUG Step 4b: ZPD zoom
-                if debug:
-                    zpd_zoom_half = 200  # samples either side of ZPD to show
-                    zpd_idx = 0  # ZPD sits at index 0 after asymmetric padding
-                    zoom_start = max(0, zpd_idx)
-                    zoom_end   = min(final_len, zpd_idx + zpd_zoom_half)
-                    # also look at the end of the array where the symmetric part lives
-                    fig_zpd, axs_zpd = plt.subplots(1, 2, figsize=(12, 4))
-
-                    # left: start of array (asymmetric side, contains ZPD)
-                    axs_zpd[0].plot(np.arange(zoom_start, zoom_end),
-                                    igram_asymm_ext[zoom_start:zoom_end],
-                                    color='steelblue', linewidth=LW)
-                    axs_zpd[0].axvline(zpd_idx, color='black', linestyle='dashed', linewidth=LW, label='ZPD (index 0)')
-                    axs_zpd[0].set_xlabel('Sample index')
-                    axs_zpd[0].set_ylabel('Amplitude')
-                    axs_zpd[0].set_title('ZPD region (start of array)')
-                    axs_zpd[0].legend(fontsize=8)
-                    axs_zpd[0].minorticks_on()
-                    axs_zpd[0].tick_params(which='both', direction='in', top=True, right=True)
-
-                    # right: end of array (symmetric side)
-                    sym_start = max(0, final_len - zpd_zoom_half)
-                    axs_zpd[1].plot(np.arange(sym_start, final_len),
-                                    igram_asymm_ext[sym_start:final_len],
-                                    color='steelblue', linewidth=LW)
-                    axs_zpd[1].axvline(final_len - symm_len, color='orange', linestyle='dashed', linewidth=LW, label='Start of symmetric part')
-                    axs_zpd[1].set_xlabel('Sample index')
-                    axs_zpd[1].set_ylabel('Amplitude')
-                    axs_zpd[1].set_title('Symmetric region (end of array)')
-                    axs_zpd[1].legend(fontsize=8)
-                    axs_zpd[1].minorticks_on()
-                    axs_zpd[1].tick_params(which='both', direction='in', top=True, right=True)
-
-                    fig_zpd.suptitle(f'ZPD zoom | x={xf[0]} f={xf[1]}')
-                    fig_zpd.tight_layout()
-                    fig_zpd.savefig('%s/x%s_f%s_step4b_zpd_zoom.png' % (out_path, xf[0], xf[1]))
-                    plt.close(fig_zpd)
-
-                # Step 5: apply window function
-                window = np.fft.ifftshift(np.blackman(final_len))
                 igram_asymm_ext *= window
-
-                # DEBUG Step 5: window alignment check
-                if debug:
-                    fig_win, ax_win = plt.subplots(figsize=(12, 4))
-                    ax_win_twin = ax_win.twinx()
-                    ax_win.plot(igram_asymm_ext, label='Windowed interferogram', color='steelblue', linewidth=LW)
-                    ax_win_twin.plot(np.fft.ifftshift(np.blackman(final_len)), label='Window function', color='orange', alpha=0.7, linewidth=LW)
-                    ax_win.set_ylabel('Interferogram amplitude', color='steelblue')
-                    ax_win_twin.set_ylabel('Window amplitude', color='orange')
-                    ax_win.set_xlabel('Sample index')
-                    ax_win.minorticks_on()
-                    ax_win.tick_params(which='both', direction='in', top=True, right=True)
-                    fig_win.suptitle(f'Window alignment check | x={xf[0]} f={xf[1]}')
-                    fig_win.legend(loc='upper right')
-                    fig_win.tight_layout()
-                    fig_win.savefig('%s/x%s_f%s_step5_window.png' % (out_path, xf[0], xf[1]))
-                    plt.close(fig_win)
 
                 fft_vals = np.fft.fftshift(np.fft.fft(igram_asymm_ext))
                 freq = np.fft.fftshift(np.fft.fftfreq(final_len, d=mmstep)) * 3e8 / 1e9
